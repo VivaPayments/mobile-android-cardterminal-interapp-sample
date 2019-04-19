@@ -50,8 +50,8 @@ public class MainActivity extends AppCompatActivity {
                         + "&appId=com.example.myapp"
                         + "&action=sale"
                         + "&clientTransactionId=1234567801234"
-                        + "&amount=1200"
-                        + "&tipAmount=200"
+                        + "&amount=120"
+                        + "&tipAmount=0"
                         + "&callback=mycallbackscheme://result"));
         payIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         payIntent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
