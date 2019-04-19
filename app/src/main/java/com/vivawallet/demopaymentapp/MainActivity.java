@@ -25,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
         tipAmountTxt = findViewById(R.id.tipAmountTxt);
         refTxt = findViewById(R.id.refTxt);
         stanTxt = findViewById(R.id.stanTxt);
+
+        //TODO: put fields for amount
     }
 
     @Override
@@ -42,8 +44,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void saleAction(View v){
-        //FIXME: handle missing activity
-
         Intent payIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(
                 "vivapayclient://pay/v1"
                         + "?merchantKey=12345678909"
@@ -53,7 +53,9 @@ public class MainActivity extends AppCompatActivity {
                         + "&amount=1200"
                         + "&tipAmount=200"
                         + "&callback=mycallbackscheme://result"));
-        payIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        payIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        payIntent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+        payIntent.addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
 
         startActivity(payIntent);
 
@@ -68,7 +70,9 @@ public class MainActivity extends AppCompatActivity {
                         + "&clientTransactionId=1234567801234"
                         + "&amount=1200"
                         + "&callback=mycallbackscheme://result"));
-        payIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        payIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        payIntent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+        payIntent.addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
 
         startActivity(payIntent);
     }

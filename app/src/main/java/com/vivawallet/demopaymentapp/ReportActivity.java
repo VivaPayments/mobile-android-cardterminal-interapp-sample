@@ -1,6 +1,7 @@
 package com.vivawallet.demopaymentapp;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -23,6 +24,7 @@ public class ReportActivity extends AppCompatActivity {
     TextView referenceNumberTxt;
     TextView authorisationCodeTxt;
     TextView tidCodeTxt;
+    TextView accountNumbertTxt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,22 +43,28 @@ public class ReportActivity extends AppCompatActivity {
         referenceNumberTxt = findViewById(R.id.referenceNumberTxt);
         authorisationCodeTxt = findViewById(R.id.authorisationCodeTxt);
         tidCodeTxt = findViewById(R.id.tidCodeTxt);
-
+        accountNumbertTxt = findViewById(R.id.accountNumbertTxt);
 
         Intent i = getIntent();
 
-        statusTxt.setText(i.getStringExtra("status") + "");
-        msgTxt.setText(i.getStringExtra("message") + "");
-        actionTxt.setText(i.getStringExtra("action") + "");
-        clientTransactionIdTxt.setText(i.getStringExtra("clientTransactionId") + "");
-        amountTxt.setText(i.getStringExtra("amount") + "");
-        tipAmountTxt.setText(i.getStringExtra("tipAmount") + "");
-        verificationMethodTxt.setText(i.getStringExtra("verificationMethod") + "");
-        rrnTxt.setText(i.getStringExtra("rrn") + "");
-        cardTypeTxt.setText(i.getStringExtra("cardType") + "");
-        referenceNumberTxt.setText(i.getStringExtra("referenceNumber") + "");
-        authorisationCodeTxt.setText(i.getStringExtra("authorisationCode") + "");
-        tidCodeTxt.setText(i.getStringExtra("tid") + "");
+        Uri data = i.getData();
+        if (data != null){
+            statusTxt.setText(data.getQueryParameter("status") + "");
+            msgTxt.setText(data.getQueryParameter("message") + "");
+            actionTxt.setText(data.getQueryParameter("action") + "");
+            clientTransactionIdTxt.setText(data.getQueryParameter("clientTransactionId") + "");
+            amountTxt.setText(data.getQueryParameter("amount") + "");
+            tipAmountTxt.setText(data.getQueryParameter("tipAmount") + "");
+            verificationMethodTxt.setText(data.getQueryParameter("verificationMethod") + "");
+            rrnTxt.setText(data.getQueryParameter("rrn") + "");
+            cardTypeTxt.setText(data.getQueryParameter("cardType") + "");
+            referenceNumberTxt.setText(data.getQueryParameter("referenceNumber") + "");
+            authorisationCodeTxt.setText(data.getQueryParameter("authorisationCode") + "");
+            tidCodeTxt.setText(data.getQueryParameter("tid") + "");
+            accountNumbertTxt.setText(data.getQueryParameter("accountNumber") + "");
+        }else{
+
+        }
 
 
     }
