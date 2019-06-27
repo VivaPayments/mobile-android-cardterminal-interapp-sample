@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
                         + "&action=sale"
                         + "&clientTransactionId=1234567801234"
                         + "&amount="+amountL
-                        + "&tipAmount=200"
+                        + "&tipAmount=0"
                         + "&callback=mycallbackscheme://result"));
         payIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         payIntent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
@@ -73,8 +73,8 @@ public class MainActivity extends AppCompatActivity {
                         + "?merchantKey=12345678909"
                         + "&appId=com.example.myapp"
                         + "&action=cancel"
-                        + "&clientTransactionId=1234567801234"
-                        + "&amount=1200"
+                        // + "&clientTransactionId=1234567801234" // To be supported on next version
+                        // + "&amount=120" // To be supported on next version
                         + "&callback=mycallbackscheme://result"));
         payIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         payIntent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
