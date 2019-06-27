@@ -44,13 +44,19 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void saleAction(View v){
+        long amountL = 1200;
+        if (v.getTag().toString().equalsIgnoreCase("0.5")){
+            amountL = 50;
+        }else if (v.getTag().toString().equalsIgnoreCase("55")){
+            amountL=5500;
+        }
         Intent payIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(
                 "vivapayclient://pay/v1"
                         + "?merchantKey=12345678909"
                         + "&appId=com.example.myapp"
                         + "&action=sale"
                         + "&clientTransactionId=1234567801234"
-                        + "&amount=1200"
+                        + "&amount="+amountL
                         + "&tipAmount=200"
                         + "&callback=mycallbackscheme://result"));
         payIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
