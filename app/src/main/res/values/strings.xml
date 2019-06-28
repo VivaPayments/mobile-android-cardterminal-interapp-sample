@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">DemoPaymentApp</string>
+    <string name="title_activity_report">ReportActivity</string>
+</resources>
