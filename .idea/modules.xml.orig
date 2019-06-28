@@ -2,9 +2,12 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+<<<<<<< HEAD
+      <module fileurl="file://$PROJECT_DIR$/.idea/PaymentsDemoApp.iml" filepath="$PROJECT_DIR$/.idea/PaymentsDemoApp.iml" />
+=======
       <module fileurl="file://$PROJECT_DIR$/PaymentsDemoApp.iml" filepath="$PROJECT_DIR$/PaymentsDemoApp.iml" />
-      <module fileurl="file://$PROJECT_DIR$/android-spoc-interappsample.iml" filepath="$PROJECT_DIR$/android-spoc-interappsample.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+>>>>>>> master
     </modules>
   </component>
 </project>
