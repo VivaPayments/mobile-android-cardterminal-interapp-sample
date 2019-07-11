@@ -116,7 +116,7 @@
                 android:layout_marginTop="10dp"
                 android:tag="0.5"
                 android:onClick="saleAction"
-                android:text="SALE 0.5€" />
+                android:text="SALE 0.5€ + tip 0.15€" />
 
 
             <TextView

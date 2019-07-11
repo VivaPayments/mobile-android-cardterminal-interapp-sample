@@ -45,8 +45,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void saleAction(View v){
         long amountL = 1200;
+        long tipL = 0;
         if (v.getTag().toString().equalsIgnoreCase("0.5")){
             amountL = 50;
+            tipL = 15;
         }else if (v.getTag().toString().equalsIgnoreCase("55")){
             amountL=5500;
         }
@@ -57,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
                         + "&action=sale"
                         + "&clientTransactionId=1234567801234"
                         + "&amount="+amountL
-                        + "&tipAmount=0"
+                        + "&tipAmount="+tipL
                         + "&callback=mycallbackscheme://result"));
         payIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         payIntent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
