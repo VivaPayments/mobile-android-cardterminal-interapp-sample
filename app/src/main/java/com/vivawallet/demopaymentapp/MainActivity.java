@@ -6,14 +6,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
     EditText amountTxt;
     EditText tipAmountTxt;
     EditText refTxt;
-    EditText stanTxt;
+    EditText referenceNumberTxt;
 
 
     @Override
@@ -24,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         amountTxt = findViewById(R.id.amountTxt);
         tipAmountTxt = findViewById(R.id.tipAmountTxt);
         refTxt = findViewById(R.id.refTxt);
-        stanTxt = findViewById(R.id.stanTxt);
+        referenceNumberTxt = findViewById(R.id.stanTxt);
 
     }
 
@@ -85,8 +84,8 @@ public class MainActivity extends AppCompatActivity {
                 + "&action=cancel"
                 + "&callback=mycallbackscheme://result";
 
-        if (stanTxt.getText().toString().length()>0){
-            reqStr = reqStr + "&stan="+ stanTxt.getText().toString();
+        if (referenceNumberTxt.getText().toString().length()>0){
+            reqStr = reqStr + "&referenceNumber="+ referenceNumberTxt.getText().toString();
         }
 
         Intent payIntent = new Intent(Intent.ACTION_VIEW, Uri.parse( reqStr));
