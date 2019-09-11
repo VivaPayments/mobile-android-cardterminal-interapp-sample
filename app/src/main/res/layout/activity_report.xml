@@ -404,6 +404,64 @@
                     android:textSize="16dp" />
 
             </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:background="#e3e3e3"
+                    android:text="orderCode: "
+                    android:textColor="#3d3d3f"
+                    android:textSize="16dp" />
+
+                <LinearLayout
+                    android:layout_width="5dp"
+                    android:layout_height="1dp"></LinearLayout>
+
+                <TextView
+                    android:id="@+id/orderCodeTxt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:text=""
+                    android:textColor="#000"
+                    android:textSize="16dp" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:background="#e3e3e3"
+                    android:text="transactionDate: "
+                    android:textColor="#3d3d3f"
+                    android:textSize="16dp" />
+
+                <LinearLayout
+                    android:layout_width="5dp"
+                    android:layout_height="1dp"></LinearLayout>
+
+                <TextView
+                    android:id="@+id/dateTxt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:text=""
+                    android:textColor="#000"
+                    android:textSize="16dp" />
+
+            </LinearLayout>
 
 
         </LinearLayout>

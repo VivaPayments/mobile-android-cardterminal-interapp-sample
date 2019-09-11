@@ -26,7 +26,6 @@ public class MainActivity extends AppCompatActivity {
         refTxt = findViewById(R.id.refTxt);
         stanTxt = findViewById(R.id.stanTxt);
 
-        //TODO: put fields for amount
     }
 
     @Override
@@ -46,11 +45,15 @@ public class MainActivity extends AppCompatActivity {
     public void saleAction(View v){
         long amountL = 1200;
         long tipL = 0;
+        String callback = "mycallbackscheme://result";
         if (v.getTag().toString().equalsIgnoreCase("0.5")){
             amountL = 50;
             tipL = 15;
         }else if (v.getTag().toString().equalsIgnoreCase("55")){
             amountL=5500;
+        }else if(v.getTag().toString().equalsIgnoreCase("6")){
+            amountL = 600;
+            callback =  "mymissingcallbackscheme://result_missing";
         }
         Intent payIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(
                 "vivapayclient://pay/v1"
@@ -60,24 +63,33 @@ public class MainActivity extends AppCompatActivity {
                         + "&clientTransactionId=1234567801234"
                         + "&amount="+amountL
                         + "&tipAmount="+tipL
-                        + "&callback=mycallbackscheme://result"));
+                        + "&callback=" +callback));
         payIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         payIntent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
         payIntent.addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
 
-        startActivity(payIntent);
+        try{
+            startActivity(payIntent);
+        }catch (Exception e){
+
+        }
+
 
     }
 
     public void cancelTransactionAction(View v){
-        Intent payIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(
-                "vivapayclient://pay/v1"
-                        + "?merchantKey=12345678909"
-                        + "&appId=com.example.myapp"
-                        + "&action=cancel"
-                        // + "&clientTransactionId=1234567801234" // To be supported on next version
-                        // + "&amount=120" // To be supported on next version
-                        + "&callback=mycallbackscheme://result"));
+
+        String reqStr =  "vivapayclient://pay/v1"
+                + "?merchantKey=12345678909"
+                + "&appId=com.example.myapp"
+                + "&action=cancel"
+                + "&callback=mycallbackscheme://result";
+
+        if (stanTxt.getText().toString().length()>0){
+            reqStr = reqStr + "&stan="+ stanTxt.getText().toString();
+        }
+
+        Intent payIntent = new Intent(Intent.ACTION_VIEW, Uri.parse( reqStr));
         payIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         payIntent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
         payIntent.addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);

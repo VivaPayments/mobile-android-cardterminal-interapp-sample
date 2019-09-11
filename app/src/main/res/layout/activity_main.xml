@@ -14,6 +14,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
+            android:paddingBottom="30dp"
             android:orientation="vertical">
 
             <TextView
@@ -117,6 +118,13 @@
                 android:tag="0.5"
                 android:onClick="saleAction"
                 android:text="SALE 0.5€ + tip 0.15€" />
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:tag="6"
+                android:onClick="saleAction"
+                android:text="6€ MISSING CALLBACK" />
 
 
             <TextView
@@ -133,7 +141,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:visibility="gone"
                 android:orientation="horizontal">
 
                 <TextView
