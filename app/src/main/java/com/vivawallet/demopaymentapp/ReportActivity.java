@@ -27,6 +27,7 @@ public class ReportActivity extends AppCompatActivity {
     TextView accountNumbertTxt;
     TextView orderCodeTxt;
     TextView dateTxt;
+    TextView installmentsTxt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +49,7 @@ public class ReportActivity extends AppCompatActivity {
         accountNumbertTxt = findViewById(R.id.accountNumbertTxt);
         orderCodeTxt = findViewById(R.id.orderCodeTxt);
         dateTxt = findViewById(R.id.dateTxt);
+        installmentsTxt = findViewById(R.id.installmentsTxt);
 
         Intent i = getIntent();
 
@@ -66,6 +68,7 @@ public class ReportActivity extends AppCompatActivity {
             authorisationCodeTxt.setText(data.getQueryParameter("authorisationCode") + "");
             tidCodeTxt.setText(data.getQueryParameter("tid") + "");
             accountNumbertTxt.setText(data.getQueryParameter("accountNumber") + "");
+            installmentsTxt.setText(data.getQueryParameter("installments") + "");
 
             orderCodeTxt.setText(data.getQueryParameter("orderCode") + "");
             dateTxt.setText(data.getQueryParameter("transactionDate") + "");

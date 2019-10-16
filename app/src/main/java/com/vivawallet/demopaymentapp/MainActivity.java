@@ -4,8 +4,12 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -13,6 +17,10 @@ public class MainActivity extends AppCompatActivity {
     EditText tipAmountTxt;
     EditText refTxt;
     EditText referenceNumberTxt;
+    CheckBox installmentsCheck;
+
+    LinearLayout prefInstallmentsLayout;
+    EditText prefInstallmentsTxt;
 
 
     @Override
@@ -24,6 +32,21 @@ public class MainActivity extends AppCompatActivity {
         tipAmountTxt = findViewById(R.id.tipAmountTxt);
         refTxt = findViewById(R.id.refTxt);
         referenceNumberTxt = findViewById(R.id.stanTxt);
+        installmentsCheck = findViewById(R.id.installmentsCheck);
+        prefInstallmentsLayout = findViewById(R.id.prefInstallmentsLayout);
+        prefInstallmentsTxt = findViewById(R.id.prefInstallmentsTxt);
+
+        if (!installmentsCheck.isChecked()){
+            prefInstallmentsLayout.setVisibility(View.GONE);
+        }else{
+            prefInstallmentsLayout.setVisibility(View.VISIBLE);
+        }
+        installmentsCheck.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                prefInstallmentsLayout.setVisibility(b ? View.VISIBLE : View.GONE);
+            }
+        });
 
     }
 
@@ -50,21 +73,38 @@ public class MainActivity extends AppCompatActivity {
             tipL = 15;
         }else if (v.getTag().toString().equalsIgnoreCase("55")){
             amountL=5500;
+        }else if (v.getTag().toString().equalsIgnoreCase("499")){
+            amountL=499;
         }else if(v.getTag().toString().equalsIgnoreCase("6")){
             amountL = 600;
             callback =  "mymissingcallbackscheme://result_missing";
         }
-        Intent payIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(
-                "vivapayclient://pay/v1"
-                        + "?merchantKey=12345678909"
-                        + "&appId=com.example.myapp"
-                        + "&action=sale"
-                        + "&clientTransactionId=1234567801234"
-                        + "&amount="+amountL
-                        + "&tipAmount="+tipL
-                        + "&callback=" +callback));
+        boolean installments = installmentsCheck.isChecked();
+        int prefInstallments = 0;
+        if (!installments){
+            prefInstallments = 0;
+        }else{
+            try{
+                prefInstallments =  Integer.parseInt(prefInstallmentsTxt.getText().toString()) ;//Integer.getInteger(prefInstallmentsTxt.getText().toString());
+            }catch (Exception e){}
+        }
+
+        String deeplinkPath = "vivapayclient://pay/v1"
+                + "?merchantKey=12345678909"
+                + "&appId=com.example.myapp"
+                + "&action=sale"
+                + "&clientTransactionId=1234567801234"
+                + "&amount="+amountL
+                + "&tipAmount="+tipL
+                + "&withInstallments="+installments
+                + "&preferredInstallments="+prefInstallments
+                + "&callback=" +callback;
+
+        Log.d("deeplinkPath:", deeplinkPath);
+
+        Intent payIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(deeplinkPath));
         payIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        payIntent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+
         payIntent.addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
 
         try{
