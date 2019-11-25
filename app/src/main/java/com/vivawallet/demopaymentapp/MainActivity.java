@@ -75,6 +75,8 @@ public class MainActivity extends AppCompatActivity {
             amountL=5500;
         }else if (v.getTag().toString().equalsIgnoreCase("499")){
             amountL=499;
+        }else if (v.getTag().toString().equalsIgnoreCase("6482")){
+            amountL=6482;
         }else if(v.getTag().toString().equalsIgnoreCase("6")){
             amountL = 600;
             callback =  "mymissingcallbackscheme://result_missing";

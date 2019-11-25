@@ -28,6 +28,7 @@ public class ReportActivity extends AppCompatActivity {
     TextView orderCodeTxt;
     TextView dateTxt;
     TextView installmentsTxt;
+    TextView transactionIdTxt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +51,7 @@ public class ReportActivity extends AppCompatActivity {
         orderCodeTxt = findViewById(R.id.orderCodeTxt);
         dateTxt = findViewById(R.id.dateTxt);
         installmentsTxt = findViewById(R.id.installmentsTxt);
+        transactionIdTxt = findViewById(R.id.transactionIdTxt);
 
         Intent i = getIntent();
 
@@ -72,6 +74,7 @@ public class ReportActivity extends AppCompatActivity {
 
             orderCodeTxt.setText(data.getQueryParameter("orderCode") + "");
             dateTxt.setText(data.getQueryParameter("transactionDate") + "");
+            transactionIdTxt.setText(data.getQueryParameter("transactionId") + "");
         }else{
 
         }

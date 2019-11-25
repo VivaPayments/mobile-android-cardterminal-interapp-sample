@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".ReportActivity">
 
 
     <TextView
         android:id="@+id/statusTxt"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="18dp"
         android:layout_marginStart="18dp"
@@ -491,9 +492,39 @@
                     android:textSize="16dp" />
 
             </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:background="#e3e3e3"
+                    android:text="TransactionId: "
+                    android:textColor="#3d3d3f"
+                    android:textSize="16dp" />
+
+                <LinearLayout
+                    android:layout_width="5dp"
+                    android:layout_height="1dp"></LinearLayout>
+
+                <TextView
+                    android:id="@+id/transactionIdTxt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:text=""
+                    android:textColor="#000"
+                    android:textSize="16dp" />
+
+            </LinearLayout>
+
 
 
         </LinearLayout>
     </ScrollView>
 
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>

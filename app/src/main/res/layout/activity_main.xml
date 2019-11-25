@@ -157,6 +157,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:tag="6482"
+                android:onClick="saleAction"
+                android:text="SALE 64.82€" />
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:tag="0.5"
                 android:onClick="saleAction"
                 android:text="SALE 0.5€ + tip 0.15€" />
