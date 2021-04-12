@@ -26,9 +26,13 @@ public class ReportActivity extends AppCompatActivity {
     TextView tidCodeTxt;
     TextView accountNumbertTxt;
     TextView orderCodeTxt;
+    TextView shortOrderCodeTxt;
     TextView dateTxt;
     TextView installmentsTxt;
     TextView transactionIdTxt;
+    TextView billPaymentTokenTxt;
+    TextView customerTrnsTxt;
+    TextView fullNameTxt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,9 +53,13 @@ public class ReportActivity extends AppCompatActivity {
         tidCodeTxt = findViewById(R.id.tidCodeTxt);
         accountNumbertTxt = findViewById(R.id.accountNumbertTxt);
         orderCodeTxt = findViewById(R.id.orderCodeTxt);
+        shortOrderCodeTxt = findViewById(R.id.shortOrderCodeTxt);
         dateTxt = findViewById(R.id.dateTxt);
         installmentsTxt = findViewById(R.id.installmentsTxt);
         transactionIdTxt = findViewById(R.id.transactionIdTxt);
+        billPaymentTokenTxt = findViewById(R.id.billPaymentTokenTxt);
+        customerTrnsTxt = findViewById(R.id.customerTrnsTxt);
+        fullNameTxt = findViewById(R.id.fullNameTxt);
 
         Intent i = getIntent();
 
@@ -73,8 +81,12 @@ public class ReportActivity extends AppCompatActivity {
             installmentsTxt.setText(data.getQueryParameter("installments") + "");
 
             orderCodeTxt.setText(data.getQueryParameter("orderCode") + "");
+            shortOrderCodeTxt.setText(data.getQueryParameter("shortOrderCode") + "");
             dateTxt.setText(data.getQueryParameter("transactionDate") + "");
             transactionIdTxt.setText(data.getQueryParameter("transactionId") + "");
+            billPaymentTokenTxt.setText(data.getQueryParameter("billPaymentToken") + "");
+            customerTrnsTxt.setText(data.getQueryParameter("customerTrns") + "");
+            fullNameTxt.setText(data.getQueryParameter("fullName") + "");
         }else{
 
         }

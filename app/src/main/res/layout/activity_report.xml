@@ -58,11 +58,11 @@
                     android:background="#e3e3e3"
                     android:text="message: "
                     android:textColor="#3d3d3f"
-                    android:textSize="16dp" />
+                    android:textSize="16sp" />
 
                 <LinearLayout
                     android:layout_width="5dp"
-                    android:layout_height="1dp"></LinearLayout>
+                    android:layout_height="1dp" />
 
                 <TextView
                     android:id="@+id/msgTxt"
@@ -71,7 +71,7 @@
                     android:layout_weight="3"
                     android:text=""
                     android:textColor="#000"
-                    android:textSize="16dp" />
+                    android:textSize="16sp" />
 
             </LinearLayout>
 
@@ -88,11 +88,11 @@
                     android:background="#e3e3e3"
                     android:text="action: "
                     android:textColor="#3d3d3f"
-                    android:textSize="16dp" />
+                    android:textSize="16sp" />
 
                 <LinearLayout
                     android:layout_width="5dp"
-                    android:layout_height="1dp"></LinearLayout>
+                    android:layout_height="1dp" />
 
                 <TextView
                     android:id="@+id/actionTxt"
@@ -101,7 +101,7 @@
                     android:layout_weight="3"
                     android:text=""
                     android:textColor="#000"
-                    android:textSize="16dp" />
+                    android:textSize="16sp" />
 
             </LinearLayout>
 
@@ -118,11 +118,11 @@
                     android:background="#e3e3e3"
                     android:text="clientTransactionId: "
                     android:textColor="#3d3d3f"
-                    android:textSize="16dp" />
+                    android:textSize="16sp" />
 
                 <LinearLayout
                     android:layout_width="5dp"
-                    android:layout_height="1dp"></LinearLayout>
+                    android:layout_height="1dp" />
 
                 <TextView
                     android:id="@+id/clientTransactionIdTxt"
@@ -131,7 +131,7 @@
                     android:layout_weight="3"
                     android:text=""
                     android:textColor="#000"
-                    android:textSize="16dp" />
+                    android:textSize="16sp" />
 
             </LinearLayout>
 
@@ -148,11 +148,11 @@
                     android:background="#e3e3e3"
                     android:text="amount: "
                     android:textColor="#3d3d3f"
-                    android:textSize="16dp" />
+                    android:textSize="16sp" />
 
                 <LinearLayout
                     android:layout_width="5dp"
-                    android:layout_height="1dp"></LinearLayout>
+                    android:layout_height="1dp" />
 
                 <TextView
                     android:id="@+id/amountTxt"
@@ -161,7 +161,7 @@
                     android:layout_weight="3"
                     android:text=""
                     android:textColor="#000"
-                    android:textSize="16dp" />
+                    android:textSize="16sp" />
 
             </LinearLayout>
 
@@ -178,11 +178,11 @@
                     android:background="#e3e3e3"
                     android:text="tipAmount: "
                     android:textColor="#3d3d3f"
-                    android:textSize="16dp" />
+                    android:textSize="16sp" />
 
                 <LinearLayout
                     android:layout_width="5dp"
-                    android:layout_height="1dp"></LinearLayout>
+                    android:layout_height="1dp" />
 
                 <TextView
                     android:id="@+id/tipAmountTxt"
@@ -191,7 +191,7 @@
                     android:layout_weight="3"
                     android:text=""
                     android:textColor="#000"
-                    android:textSize="16dp" />
+                    android:textSize="16sp" />
 
             </LinearLayout>
 
@@ -208,11 +208,11 @@
                     android:background="#e3e3e3"
                     android:text="verificationMethod: "
                     android:textColor="#3d3d3f"
-                    android:textSize="16dp" />
+                    android:textSize="16sp" />
 
                 <LinearLayout
                     android:layout_width="5dp"
-                    android:layout_height="1dp"></LinearLayout>
+                    android:layout_height="1dp" />
 
                 <TextView
                     android:id="@+id/verificationMethodTxt"
@@ -221,7 +221,7 @@
                     android:layout_weight="3"
                     android:text=""
                     android:textColor="#000"
-                    android:textSize="16dp" />
+                    android:textSize="16sp" />
 
             </LinearLayout>
 
@@ -238,11 +238,11 @@
                     android:background="#e3e3e3"
                     android:text="rrn: "
                     android:textColor="#3d3d3f"
-                    android:textSize="16dp" />
+                    android:textSize="16sp" />
 
                 <LinearLayout
                     android:layout_width="5dp"
-                    android:layout_height="1dp"></LinearLayout>
+                    android:layout_height="1dp" />
 
                 <TextView
                     android:id="@+id/rrnTxt"
@@ -251,7 +251,7 @@
                     android:layout_weight="3"
                     android:text=""
                     android:textColor="#000"
-                    android:textSize="16dp" />
+                    android:textSize="16sp" />
 
             </LinearLayout>
 
@@ -268,11 +268,11 @@
                     android:background="#e3e3e3"
                     android:text="cardType: "
                     android:textColor="#3d3d3f"
-                    android:textSize="16dp" />
+                    android:textSize="16sp" />
 
                 <LinearLayout
                     android:layout_width="5dp"
-                    android:layout_height="1dp"></LinearLayout>
+                    android:layout_height="1dp" />
 
                 <TextView
                     android:id="@+id/cardTypeTxt"
@@ -281,7 +281,7 @@
                     android:layout_weight="3"
                     android:text=""
                     android:textColor="#000"
-                    android:textSize="16dp" />
+                    android:textSize="16sp" />
 
             </LinearLayout>
 
@@ -298,11 +298,11 @@
                     android:background="#e3e3e3"
                     android:text="accountNumber: "
                     android:textColor="#3d3d3f"
-                    android:textSize="16dp" />
+                    android:textSize="16sp" />
 
                 <LinearLayout
                     android:layout_width="5dp"
-                    android:layout_height="1dp"></LinearLayout>
+                    android:layout_height="1dp" />
 
                 <TextView
                     android:id="@+id/accountNumbertTxt"
@@ -311,7 +311,7 @@
                     android:layout_weight="3"
                     android:text=""
                     android:textColor="#000"
-                    android:textSize="16dp" />
+                    android:textSize="16sp" />
 
             </LinearLayout>
 
@@ -328,11 +328,11 @@
                     android:background="#e3e3e3"
                     android:text="referenceNumber: "
                     android:textColor="#3d3d3f"
-                    android:textSize="16dp" />
+                    android:textSize="16sp" />
 
                 <LinearLayout
                     android:layout_width="5dp"
-                    android:layout_height="1dp"></LinearLayout>
+                    android:layout_height="1dp" />
 
                 <TextView
                     android:id="@+id/referenceNumberTxt"
@@ -341,10 +341,9 @@
                     android:layout_weight="3"
                     android:text=""
                     android:textColor="#000"
-                    android:textSize="16dp" />
+                    android:textSize="16sp" />
 
             </LinearLayout>
-
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -359,11 +358,11 @@
                     android:background="#e3e3e3"
                     android:text="authorisationCode: "
                     android:textColor="#3d3d3f"
-                    android:textSize="16dp" />
+                    android:textSize="16sp" />
 
                 <LinearLayout
                     android:layout_width="5dp"
-                    android:layout_height="1dp"></LinearLayout>
+                    android:layout_height="1dp" />
 
                 <TextView
                     android:id="@+id/authorisationCodeTxt"
@@ -372,7 +371,7 @@
                     android:layout_weight="3"
                     android:text=""
                     android:textColor="#000"
-                    android:textSize="16dp" />
+                    android:textSize="16sp" />
 
             </LinearLayout>
 
@@ -389,11 +388,11 @@
                     android:background="#e3e3e3"
                     android:text="tid: "
                     android:textColor="#3d3d3f"
-                    android:textSize="16dp" />
+                    android:textSize="16sp" />
 
                 <LinearLayout
                     android:layout_width="5dp"
-                    android:layout_height="1dp"></LinearLayout>
+                    android:layout_height="1dp" />
 
                 <TextView
                     android:id="@+id/tidCodeTxt"
@@ -402,9 +401,10 @@
                     android:layout_weight="3"
                     android:text=""
                     android:textColor="#000"
-                    android:textSize="16dp" />
+                    android:textSize="16sp" />
 
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -418,11 +418,11 @@
                     android:background="#e3e3e3"
                     android:text="orderCode: "
                     android:textColor="#3d3d3f"
-                    android:textSize="16dp" />
+                    android:textSize="16sp" />
 
                 <LinearLayout
                     android:layout_width="5dp"
-                    android:layout_height="1dp"></LinearLayout>
+                    android:layout_height="1dp" />
 
                 <TextView
                     android:id="@+id/orderCodeTxt"
@@ -431,9 +431,39 @@
                     android:layout_weight="3"
                     android:text=""
                     android:textColor="#000"
-                    android:textSize="16dp" />
+                    android:textSize="16sp" />
 
             </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:background="#e3e3e3"
+                    android:text="shortOrderCode: "
+                    android:textColor="#3d3d3f"
+                    android:textSize="16sp" />
+
+                <LinearLayout
+                    android:layout_width="5dp"
+                    android:layout_height="1dp" />
+
+                <TextView
+                    android:id="@+id/shortOrderCodeTxt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:text=""
+                    android:textColor="#000"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -447,11 +477,11 @@
                     android:background="#e3e3e3"
                     android:text="transactionDate: "
                     android:textColor="#3d3d3f"
-                    android:textSize="16dp" />
+                    android:textSize="16sp" />
 
                 <LinearLayout
                     android:layout_width="5dp"
-                    android:layout_height="1dp"></LinearLayout>
+                    android:layout_height="1dp" />
 
                 <TextView
                     android:id="@+id/dateTxt"
@@ -460,9 +490,10 @@
                     android:layout_weight="3"
                     android:text=""
                     android:textColor="#000"
-                    android:textSize="16dp" />
+                    android:textSize="16sp" />
 
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -476,11 +507,11 @@
                     android:background="#e3e3e3"
                     android:text="installments: "
                     android:textColor="#3d3d3f"
-                    android:textSize="16dp" />
+                    android:textSize="16sp" />
 
                 <LinearLayout
                     android:layout_width="5dp"
-                    android:layout_height="1dp"></LinearLayout>
+                    android:layout_height="1dp" />
 
                 <TextView
                     android:id="@+id/installmentsTxt"
@@ -489,9 +520,10 @@
                     android:layout_weight="3"
                     android:text=""
                     android:textColor="#000"
-                    android:textSize="16dp" />
+                    android:textSize="16sp" />
 
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -505,11 +537,11 @@
                     android:background="#e3e3e3"
                     android:text="TransactionId: "
                     android:textColor="#3d3d3f"
-                    android:textSize="16dp" />
+                    android:textSize="16sp" />
 
                 <LinearLayout
                     android:layout_width="5dp"
-                    android:layout_height="1dp"></LinearLayout>
+                    android:layout_height="1dp" />
 
                 <TextView
                     android:id="@+id/transactionIdTxt"
@@ -518,12 +550,99 @@
                     android:layout_weight="3"
                     android:text=""
                     android:textColor="#000"
-                    android:textSize="16dp" />
+                    android:textSize="16sp" />
 
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
 
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:background="#e3e3e3"
+                    android:text="billPaymentToken: "
+                    android:textColor="#3d3d3f"
+                    android:textSize="16sp" />
 
+                <LinearLayout
+                    android:layout_width="5dp"
+                    android:layout_height="1dp" />
+
+                <TextView
+                    android:id="@+id/billPaymentTokenTxt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:text=""
+                    android:textColor="#000"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:background="#e3e3e3"
+                    android:text="customerTrns: "
+                    android:textColor="#3d3d3f"
+                    android:textSize="16sp" />
+
+                <LinearLayout
+                    android:layout_width="5dp"
+                    android:layout_height="1dp" />
+
+                <TextView
+                    android:id="@+id/customerTrnsTxt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:text=""
+                    android:textColor="#000"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:background="#e3e3e3"
+                    android:text="fullName: "
+                    android:textColor="#3d3d3f"
+                    android:textSize="16sp" />
+
+                <LinearLayout
+                    android:layout_width="5dp"
+                    android:layout_height="1dp" />
+
+                <TextView
+                    android:id="@+id/fullNameTxt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:text=""
+                    android:textColor="#000"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 

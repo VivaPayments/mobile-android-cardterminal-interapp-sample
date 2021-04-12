@@ -17,6 +17,30 @@
             android:paddingBottom="30dp"
             android:orientation="vertical">
 
+            <CheckBox
+                android:id="@+id/emptyMerchantKey"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Send Empty Merchant Key" />
+
+            <CheckBox
+                android:id="@+id/emptyAppId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Send Empty App id" />
+
+            <CheckBox
+                android:id="@+id/emptyCallback"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Send Empty Callback" />
+
+            <CheckBox
+                android:id="@+id/emptyAction"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Send Empty Action" />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -26,20 +50,20 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#3d3d3f"></LinearLayout>
+                android:background="#3d3d3f" />
 
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:visibility="gone"
+                android:visibility="visible"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Amount:" />
+                    android:text="Amount:\n(in Cents)" />
 
                 <EditText
                     android:id="@+id/amountTxt"
@@ -47,22 +71,21 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:gravity="center"
-                    android:inputType="numberDecimal"
-                    android:text="10.00" />
+                    android:text="10" />
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:visibility="gone"
+                android:visibility="visible"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Tip Amount:" />
+                    android:text="Tip Amount:\n(in Cents)" />
 
                 <EditText
                     android:id="@+id/tipAmountTxt"
@@ -70,10 +93,16 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:gravity="center"
-                    android:inputType="numberDecimal"
-                    android:text="1.00" />
+                    android:text="1" />
 
             </LinearLayout>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:tag="000"
+                android:onClick="saleAction"
+                android:text="SALE" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -120,11 +149,10 @@
                     android:minHeight="50dp"
                     android:gravity="center"
                     android:lines="3"
-                    android:layout_weight="2"></TextView>
+                    android:layout_weight="2" />
                 <EditText
                     android:id="@+id/prefInstallmentsTxt"
                     android:layout_width="0dp"
-                    android:inputType="number"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:layout_height="wrap_content"
@@ -132,6 +160,13 @@
             </LinearLayout>
 
 
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:tag="101"
+                android:onClick="saleAction"
+                android:text="SALE 1.01€" />
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -186,10 +221,11 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#3d3d3f"></LinearLayout>
+                android:background="#3d3d3f" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -204,8 +240,116 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:gravity="center"
-                    android:inputType="number"
                     android:text="" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Order Code:" />
+
+                <EditText
+                    android:id="@+id/orderCodeTxt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:text="" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Short Order Code:" />
+
+                <EditText
+                    android:id="@+id/shortOrderCodeTxt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:text="" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="32dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:text="Amount\n(in Cents):" />
+
+                <EditText
+                    android:id="@+id/amountRefund"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:text="" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/dateFromContainer"
+                android:layout_width="match_parent"
+                android:layout_marginBottom="32dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="clearDateFrom"
+                    android:text="Date From:" />
+
+                <TextView
+                    android:id="@+id/dateFrom"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:background="#d9d9d9"
+                    android:gravity="center" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/dateToContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="clearDateTo"
+                    android:text="Date To:" />
+
+                <TextView
+                    android:id="@+id/dateTo"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:background="#d9d9d9"
+                    android:gravity="center" />
 
             </LinearLayout>
             <Button
@@ -216,6 +360,182 @@
                 android:text="Cancel Transaction" />
 
 
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="Bill Payments (GR only)"
+                    android:textSize="25dp" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#3d3d3f" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="32dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_gravity="center"
+                        android:text="Amount\n(in Cents):" />
+
+                    <EditText
+                        android:id="@+id/amountBill"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:gravity="center"
+                        android:inputType="number"
+                        android:text="" />
+
+                </LinearLayout>
+                <TextView
+                    android:id="@+id/billFees"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:layout_margin="10dp"
+                    android:layout_gravity="center"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+                <TextView
+                    android:id="@+id/token"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="no token"
+                    android:layout_margin="10dp"
+                    android:layout_gravity="center"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Button
+                    android:id="@+id/getTockenBtn"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="getBillPaymentToken"
+                    android:text="GET TOKEN"
+                    />
+
+                <Button
+                    android:id="@+id/sendTockenBtn"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="sendBillPaymentToken"
+                    android:text="SEND TOKEN"
+                    />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Receipt and Rating Options"
+                android:textSize="25sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#3d3d3f" />
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|start"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="SHOW RECEIPT" />
+
+                <CheckBox
+                    android:id="@+id/show_receipt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|end"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginBottom="8dp" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|start"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="SHOW RATING" />
+
+                <CheckBox
+                    android:id="@+id/show_rating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|end"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginBottom="8dp" />
+            </FrameLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="Abort"
+                    android:textSize="25sp" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#3d3d3f" />
+
+
+                <Button
+                    android:id="@+id/abortBtn"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="abortButtonTapped"
+                    android:text="ABORT"
+                    />
+
+            </LinearLayout>
         </LinearLayout>
 
     </ScrollView>
