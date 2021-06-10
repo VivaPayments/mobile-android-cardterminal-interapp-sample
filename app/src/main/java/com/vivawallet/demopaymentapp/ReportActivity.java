@@ -7,6 +7,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -33,6 +34,14 @@ public class ReportActivity extends AppCompatActivity {
     TextView billPaymentTokenTxt;
     TextView customerTrnsTxt;
     TextView fullNameTxt;
+    TextView businessDescriptionType;
+    TextView printLogoOnMerchantReceipt;
+    TextView printVATOnMerchantReceipt;
+    TextView isBarcodeEnabled;
+    TextView businessDescriptionEnabled;
+    TextView printAddressOnReceipt;
+    TextView isMerchantReceiptEnabled;
+    TextView isCustomerReceiptEnabled;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,10 +70,20 @@ public class ReportActivity extends AppCompatActivity {
         customerTrnsTxt = findViewById(R.id.customerTrnsTxt);
         fullNameTxt = findViewById(R.id.fullNameTxt);
 
+        businessDescriptionType = findViewById(R.id.businessDescriptionType);
+        printLogoOnMerchantReceipt = findViewById(R.id.printLogoOnMerchantReceipt);
+        printVATOnMerchantReceipt = findViewById(R.id.printVATOnMerchantReceipt);
+        isBarcodeEnabled = findViewById(R.id.isBarcodeEnabled);
+        businessDescriptionEnabled = findViewById(R.id.businessDescriptionEnabled);
+        printAddressOnReceipt = findViewById(R.id.printAddressOnReceipt);
+        isMerchantReceiptEnabled = findViewById(R.id.isMerchantReceiptEnabled);
+        isCustomerReceiptEnabled = findViewById(R.id.isCustomerReceiptEnabled);
+
         Intent i = getIntent();
 
         Uri data = i.getData();
         if (data != null){
+            Log.d("deeplinkResponsePath:", data.toString());
             statusTxt.setText(data.getQueryParameter("status") + "");
             msgTxt.setText(data.getQueryParameter("message") + "");
             actionTxt.setText(data.getQueryParameter("action") + "");
@@ -87,6 +106,15 @@ public class ReportActivity extends AppCompatActivity {
             billPaymentTokenTxt.setText(data.getQueryParameter("billPaymentToken") + "");
             customerTrnsTxt.setText(data.getQueryParameter("customerTrns") + "");
             fullNameTxt.setText(data.getQueryParameter("fullName") + "");
+
+            businessDescriptionType.setText(data.getQueryParameter("businessDescriptionType") + "");
+            printLogoOnMerchantReceipt.setText(data.getQueryParameter("printLogoOnMerchantReceipt") + "");
+            printVATOnMerchantReceipt.setText(data.getQueryParameter("printVATOnMerchantReceipt") + "");
+            isBarcodeEnabled.setText(data.getQueryParameter("isBarcodeEnabled") + "");
+            businessDescriptionEnabled.setText(data.getQueryParameter("businessDescriptionEnabled") + "");
+            printAddressOnReceipt.setText(data.getQueryParameter("printAddressOnReceipt") + "");
+            isMerchantReceiptEnabled.setText(data.getQueryParameter("isMerchantReceiptEnabled") + "");
+            isCustomerReceiptEnabled.setText(data.getQueryParameter("isCustomerReceiptEnabled") + "");
         }else{
 
         }

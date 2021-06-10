@@ -10,12 +10,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             android:paddingBottom="30dp"
             android:orientation="vertical">
+
 
             <CheckBox
                 android:id="@+id/emptyMerchantKey"
@@ -94,6 +96,26 @@
                     android:layout_weight="2"
                     android:gravity="center"
                     android:text="1" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="visible"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Payment Reference Number" />
+
+                <EditText
+                    android:id="@+id/paymentReferenceTxt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:gravity="center"/>
 
             </LinearLayout>
             <Button
@@ -505,6 +527,30 @@
                     android:layout_marginBottom="8dp" />
             </FrameLayout>
 
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|start"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="SHOW RESULT" />
+
+                <CheckBox
+                    android:id="@+id/show_result"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|end"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginBottom="8dp" />
+            </FrameLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -533,6 +579,510 @@
                     android:layout_height="wrap_content"
                     android:onClick="abortButtonTapped"
                     android:text="ABORT"
+                    />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Set printing options"
+                android:textSize="25sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#3d3d3f" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|start"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="PRINT ORDER CODE BARCODE" />
+
+                <CheckBox
+                    android:id="@+id/print_order_code"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|end"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginBottom="8dp" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|start"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="PRINT LOGO ON MERCHANT RECEIPT" />
+
+                <CheckBox
+                    android:id="@+id/logo_on_merchant_receipt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|end"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginBottom="8dp" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|start"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="PRINT VAT ON MERCHANT RECEIPT" />
+
+                <CheckBox
+                    android:id="@+id/vat_on_merchant_receipt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|end"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginBottom="8dp" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|start"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="PRINT BUSINESS DESCRIPTION" />
+
+                <CheckBox
+                    android:id="@+id/print_business_description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|end"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginBottom="8dp" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|start"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="PRINT ADDRESS" />
+
+                <CheckBox
+                    android:id="@+id/print_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|end"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginBottom="8dp" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|start"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="PRINT MERCHANT RECEIPT" />
+
+                <CheckBox
+                    android:id="@+id/print_merchant_receipt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|end"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginBottom="8dp" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|start"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="PRINT CUSTOMER RECEIPT" />
+
+                <CheckBox
+                    android:id="@+id/print_customer_receipt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|end"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginBottom="8dp" />
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="32dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:text="Business Description Type" />
+
+                <EditText
+                    android:id="@+id/business_description_type"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:text="businessName" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="32dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/businessName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:onClick="setBusinessDescriptionType"
+                    android:tag="businessName"
+                    android:text="BUSINESS NAME" />
+
+
+                <Button
+                    android:id="@+id/tradeName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:onClick="setBusinessDescriptionType"
+                    android:tag="tradeName"
+                    android:text="TRADE NAME" />
+
+
+                <Button
+                    android:id="@+id/storeName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:onClick="setBusinessDescriptionType"
+                    android:tag="storeName"
+                    android:text="STORE NAME" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="32dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:onClick="setPrintingSettings"
+                    android:tag="businessName"
+                    android:text="SET PRINTING SETTINGS" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="MultiMerchant"
+                android:textSize="25dp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#3d3d3f" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=" test merchant:" />
+            <EditText
+                android:id="@+id/resellerMerchId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="ddcaea00-2cf8-4485-80af-5ddcd6d14b2a" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp"
+                android:layout_marginBottom="10dp"
+                android:paddingRight="10dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:lines="2"
+                    android:layout_gravity="center"
+                    android:text="Reseller Source:" />
+                <EditText
+                    android:id="@+id/resellerSourceCodeTxt"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:layout_height="wrap_content"
+                    android:text="Default"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp"
+                android:layout_marginBottom="10dp"
+                android:paddingRight="10dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:lines="2"
+                    android:layout_gravity="center"
+                    android:text="Multi merchant Source Code:" />
+                <EditText
+                    android:id="@+id/multimerchantSourceCodeTxt"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:layout_height="wrap_content"
+                    android:text="Default"/>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp"
+                android:layout_marginBottom="10dp"
+                android:paddingRight="10dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:lines="2"
+                    android:layout_gravity="center"
+                    android:text="CustomerTrns:" />
+                <EditText
+                    android:id="@+id/customerTrnsTxt"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:layout_height="wrap_content"
+                    android:text="123yoyo123"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp"
+                android:layout_marginBottom="10dp"
+                android:paddingRight="10dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:lines="2"
+                    android:layout_gravity="center"
+                    android:text="ClientTransactionId:" />
+                <EditText
+                    android:id="@+id/merchantTrnsTxt"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:layout_height="wrap_content"
+                    android:text="123456qwerty"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp"
+                android:layout_marginBottom="10dp"
+                android:paddingRight="10dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:lines="2"
+                    android:layout_gravity="center"
+                    android:text="Currency iso code:" />
+                <EditText
+                    android:id="@+id/currencyCodeTxt"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:layout_height="wrap_content"
+                    android:text="978"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/resellerAmountLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp"
+                android:layout_marginBottom="10dp"
+                android:paddingRight="10dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:lines="2"
+                    android:layout_gravity="center"
+                    android:text="Amount:\n(in Cents)" />
+                <EditText
+                    android:id="@+id/resellerAmountTxt"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:layout_height="wrap_content"
+                    android:text="1500"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/resellerTipAmountLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp"
+                android:layout_marginBottom="10dp"
+                android:paddingRight="10dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:lines="2"
+                    android:layout_gravity="center"
+                    android:text="Tip Amount:\n(in Cents)" />
+                <EditText
+                    android:id="@+id/resellerTipAmountTxt"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:layout_height="wrap_content"
+                    android:text="10"/>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/resellerSendBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:onClick="sendResellerOrder"
+                android:text="Send Order" />
+            <Button
+
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:onClick="tempBtn"
+                android:text="temp Btn" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="Foreground"
+                    android:textSize="25sp" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#3d3d3f" />
+
+
+                <Button
+                    android:id="@+id/foregroundBtn"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="foregroundButtonTapped"
+                    android:text="FOREGROUND"
                     />
 
             </LinearLayout>
