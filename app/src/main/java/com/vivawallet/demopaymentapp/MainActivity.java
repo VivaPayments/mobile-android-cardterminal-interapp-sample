@@ -64,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
     CheckBox vatOnMerchantReceipt;
     CheckBox logoOnMerchantReceipt;
     CheckBox printOrderCode;
+    CheckBox isvCheck;
 
     DatePickerDialog dialog;
     TextView dateFrom;
@@ -72,6 +73,11 @@ public class MainActivity extends AppCompatActivity {
     LinearLayout dateToContainer;
     LinearLayout dateFromContainer;
     LinearLayout prefInstallmentsLayout;
+    LinearLayout ISVFeeLayout;
+    LinearLayout ISVClientIdLayout;
+    LinearLayout ISVClientSecretLayout;
+    LinearLayout ISVSourceCodeLayout;
+
     EditText prefInstallmentsTxt;
     EditText orderCode;
     EditText shortOrderCode;
@@ -79,6 +85,10 @@ public class MainActivity extends AppCompatActivity {
     EditText amountBill;
     EditText businessDescriptionType;
     EditText paymentReferenceTxt;
+    EditText ISVClientIdTxt;
+    EditText ISVFeeTxt;
+    EditText ISVClientSecretTxt;
+    EditText ISVSourceCodeTxt;
 
     EditText resellerAmountTxt;
     Button resellerSendBtn;
@@ -135,6 +145,11 @@ public class MainActivity extends AppCompatActivity {
         resellerAmountTxt = findViewById(R.id.resellerAmountTxt);
         resellerSendBtn = findViewById(R.id.resellerSendBtn);
         printCustomerReceipt = findViewById(R.id.print_customer_receipt);
+        isvCheck = findViewById(R.id.isvCheck);
+        ISVClientIdTxt = findViewById(R.id.ISVClientIdTxt);
+        ISVFeeTxt = findViewById(R.id.ISVFeeTxt);
+        ISVSourceCodeLayout = findViewById(R.id.ISVSourceCodeLayout);
+        ISVClientSecretLayout = findViewById(R.id.ISVClientSecretLayout);
 
         resellerMerchId = findViewById(R.id.resellerMerchId);
         currencyCode = findViewById(R.id.currencyCodeTxt);
@@ -144,11 +159,27 @@ public class MainActivity extends AppCompatActivity {
         resellerTipAmountTxt = findViewById(R.id.resellerTipAmountTxt);
         merchantTrnsTxt = findViewById(R.id.merchantTrnsTxt);
         multimerchantSourceCodeTxt = findViewById(R.id.multimerchantSourceCodeTxt);
+        ISVClientIdLayout = findViewById(R.id.ISVClientIdLayout);
+        ISVFeeLayout = findViewById(R.id.ISVFeeLayout);
+        ISVSourceCodeTxt = findViewById(R.id.ISVSourceCodeTxt);
+        ISVClientSecretTxt = findViewById(R.id.ISVClientSecretTxt);
 
         if (!installmentsCheck.isChecked()){
             prefInstallmentsLayout.setVisibility(View.GONE);
         }else{
             prefInstallmentsLayout.setVisibility(View.VISIBLE);
+        }
+
+        if (!isvCheck.isChecked()){
+            ISVFeeLayout.setVisibility(View.GONE);
+            ISVClientIdLayout.setVisibility(View.GONE);
+            ISVSourceCodeLayout.setVisibility(View.GONE);
+            ISVClientSecretLayout.setVisibility(View.GONE);
+        }else{
+            ISVFeeLayout.setVisibility(View.VISIBLE);
+            ISVClientIdLayout.setVisibility(View.VISIBLE);
+            ISVSourceCodeLayout.setVisibility(View.VISIBLE);
+            ISVClientSecretLayout.setVisibility(View.VISIBLE);
         }
 
         dateFromContainer.setOnClickListener(new View.OnClickListener() {
@@ -169,6 +200,16 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 prefInstallmentsLayout.setVisibility(b ? View.VISIBLE : View.GONE);
+            }
+        });
+
+        isvCheck.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                ISVFeeLayout.setVisibility(b ? View.VISIBLE : View.GONE);
+                ISVClientIdLayout.setVisibility(b ? View.VISIBLE : View.GONE);
+                ISVSourceCodeLayout.setVisibility(b ? View.VISIBLE : View.GONE);
+                ISVClientSecretLayout.setVisibility(b ? View.VISIBLE : View.GONE);
             }
         });
 
@@ -251,12 +292,19 @@ public class MainActivity extends AppCompatActivity {
                 + "&show_rating=" + rating
                 + "&show_transaction_result=" + result
                 + "&withInstallments=" + installments
-                + "&preferredInstallments=" + prefInstallments
-                + "&callback=" + callback;
+                + "&preferredInstallments=" + prefInstallments;
 
         if (!paymentReferenceTxt.getText().toString().equals("")) {
             deeplinkPath = deeplinkPath + "&clientTransactionId=" + paymentReferenceTxt.getText().toString();
         }
+
+        if (isvCheck.isChecked()) {
+            deeplinkPath = deeplinkPath + "&ISV_amount=" + ISVFeeTxt.getText().toString();
+            deeplinkPath = deeplinkPath + "&ISV_clientId=" + ISVClientIdTxt.getText().toString();
+            deeplinkPath = deeplinkPath + "&ISV_clientSecret=" + ISVClientSecretTxt.getText().toString();
+            deeplinkPath = deeplinkPath + "&ISV_sourceCode=" + ISVSourceCodeTxt.getText().toString();
+        }
+        deeplinkPath = deeplinkPath + "&callback=" + callback;
 
         Log.d(TAG, "deeplinkPath:" + " " +deeplinkPath);
 

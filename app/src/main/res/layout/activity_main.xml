@@ -181,6 +181,111 @@
                     android:text="0"/>
             </LinearLayout>
 
+            <CheckBox
+                android:id="@+id/isvCheck"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sale with ISV" />
+
+            <LinearLayout
+                android:id="@+id/ISVFeeLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="ISV fee: "
+                    android:textColor="#3d3d3f"
+                    android:textSize="17sp" />
+
+                <EditText
+                    android:id="@+id/ISVFeeTxt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:text="10" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ISVClientIdLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="ISV client id: "
+                    android:textColor="#3d3d3f"
+                    android:textSize="17sp" />
+
+                <EditText
+                    android:id="@+id/ISVClientIdTxt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:text="" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ISVClientSecretLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="ISV client secret: "
+                    android:textColor="#3d3d3f"
+                    android:textSize="17sp" />
+
+                <EditText
+                    android:id="@+id/ISVClientSecretTxt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:text="" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ISVSourceCodeLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="ISV source code: "
+                    android:textColor="#3d3d3f"
+                    android:textSize="17sp" />
+
+                <EditText
+                    android:id="@+id/ISVSourceCodeTxt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:text="123456" />
+            </LinearLayout>
 
             <Button
                 android:layout_width="match_parent"

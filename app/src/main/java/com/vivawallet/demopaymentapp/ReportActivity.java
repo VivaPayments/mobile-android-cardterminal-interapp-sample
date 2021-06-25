@@ -42,6 +42,10 @@ public class ReportActivity extends AppCompatActivity {
     TextView printAddressOnReceipt;
     TextView isMerchantReceiptEnabled;
     TextView isCustomerReceiptEnabled;
+    TextView ISV_amount;
+    TextView ISV_clientId;
+    TextView ISV_clientSecret;
+    TextView ISV_sourceCode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,6 +82,10 @@ public class ReportActivity extends AppCompatActivity {
         printAddressOnReceipt = findViewById(R.id.printAddressOnReceipt);
         isMerchantReceiptEnabled = findViewById(R.id.isMerchantReceiptEnabled);
         isCustomerReceiptEnabled = findViewById(R.id.isCustomerReceiptEnabled);
+        ISV_amount = findViewById(R.id.ISV_amount);
+        ISV_clientId = findViewById(R.id.ISV_clientId);
+        ISV_clientSecret = findViewById(R.id.ISV_clientSecret);
+        ISV_sourceCode = findViewById(R.id.ISV_sourceCode);
 
         Intent i = getIntent();
 
@@ -115,6 +123,10 @@ public class ReportActivity extends AppCompatActivity {
             printAddressOnReceipt.setText(data.getQueryParameter("printAddressOnReceipt") + "");
             isMerchantReceiptEnabled.setText(data.getQueryParameter("isMerchantReceiptEnabled") + "");
             isCustomerReceiptEnabled.setText(data.getQueryParameter("isCustomerReceiptEnabled") + "");
+            ISV_amount.setText(data.getQueryParameter("ISV_amount") + "");
+            ISV_clientId.setText(data.getQueryParameter("ISV_clientId") + "");
+            ISV_clientSecret.setText(data.getQueryParameter("ISV_clientSecret") + "");
+            ISV_sourceCode.setText(data.getQueryParameter("ISV_sourceCode") + "");
         }else{
 
         }
