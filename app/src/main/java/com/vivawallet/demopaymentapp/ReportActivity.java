@@ -46,6 +46,9 @@ public class ReportActivity extends AppCompatActivity {
     TextView ISV_clientId;
     TextView ISV_clientSecret;
     TextView ISV_sourceCode;
+    TextView commandTxt;
+    TextView batchIdTxt;
+    TextView batchNameTxt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,6 +90,10 @@ public class ReportActivity extends AppCompatActivity {
         ISV_clientSecret = findViewById(R.id.ISV_clientSecret);
         ISV_sourceCode = findViewById(R.id.ISV_sourceCode);
 
+        commandTxt = findViewById(R.id.commandTxt);
+        batchIdTxt = findViewById(R.id.batchIdTxt);
+        batchNameTxt = findViewById(R.id.batchNameTxt);
+
         Intent i = getIntent();
 
         Uri data = i.getData();
@@ -127,6 +134,10 @@ public class ReportActivity extends AppCompatActivity {
             ISV_clientId.setText(data.getQueryParameter("ISV_clientId") + "");
             ISV_clientSecret.setText(data.getQueryParameter("ISV_clientSecret") + "");
             ISV_sourceCode.setText(data.getQueryParameter("ISV_sourceCode") + "");
+
+            commandTxt.setText(data.getQueryParameter("command") + "");
+            batchIdTxt.setText(data.getQueryParameter("batchId") + "");
+            batchNameTxt.setText(data.getQueryParameter("batchName") + "");
         }else{
 
         }

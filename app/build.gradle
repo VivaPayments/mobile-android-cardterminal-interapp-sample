@@ -6,8 +6,8 @@ android {
         applicationId "com.vivawallet.demopaymentapp"
         minSdkVersion 21
         targetSdkVersion 28
-        versionCode 80
-        versionName "1.6.0"
+        versionCode 90
+        versionName "1.7.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

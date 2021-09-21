@@ -103,6 +103,8 @@ public class MainActivity extends AppCompatActivity {
     EditText merchantTrnsTxt;
     EditText multimerchantSourceCodeTxt;
 
+    EditText batchIdTxt;
+    EditText batchNameTxt;
 
     static final String UTC_DATEFORMAT = "yyyy-MM-dd HH:mm:ss";
 
@@ -163,6 +165,8 @@ public class MainActivity extends AppCompatActivity {
         ISVFeeLayout = findViewById(R.id.ISVFeeLayout);
         ISVSourceCodeTxt = findViewById(R.id.ISVSourceCodeTxt);
         ISVClientSecretTxt = findViewById(R.id.ISVClientSecretTxt);
+        batchIdTxt = findViewById(R.id.batchIdText);
+        batchNameTxt = findViewById(R.id.batchNameText);
 
         if (!installmentsCheck.isChecked()){
             prefInstallmentsLayout.setVisibility(View.GONE);
@@ -880,6 +884,102 @@ public class MainActivity extends AppCompatActivity {
         payIntent.addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
         startActivity(payIntent);
 
+    }
+
+    public void openBatchButtonTapped(View v) {
+        String callback = "mycallbackscheme://result";
+        String merchantKey = "12345678909";
+        String appId = "com.example.myapp";
+        String action = "batch";
+
+        if (emptyMerchantKey.isChecked()) {
+            merchantKey = "";
+        }
+        if (emptyAppId.isChecked()) {
+            merchantKey = "";
+        }
+        if (emptyCallback.isChecked()) {
+            appId = "";
+        }
+        if (emptyAction.isChecked()) {
+            action = "";
+        }
+
+        String deeplinkPath = "vivapayclient://pay/v1"
+                + "?merchantKey=" + merchantKey
+                + "&appId=" + appId
+                + "&action=" + action
+                + "&callback=" + callback
+                + "&command=" + "open";
+
+        if (batchIdTxt.getText() != null) {
+            if (!batchIdTxt.getText().toString().isEmpty()) {
+                deeplinkPath = deeplinkPath
+                        + "&batchId=" + batchIdTxt.getText().toString();
+            }
+        }
+
+        if (batchNameTxt.getText() != null) {
+            if (!batchNameTxt.getText().toString().isEmpty()) {
+                deeplinkPath = deeplinkPath
+                        + "&batchName=" + batchNameTxt.getText().toString();
+            }
+        }
+
+        Log.d(TAG, "deeplinkPath:" + deeplinkPath);
+
+        Intent payIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(deeplinkPath));
+        payIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        payIntent.addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
+        startActivity(payIntent);
+    }
+
+    public void closeBatchButtonTapped(View v) {
+        String callback = "mycallbackscheme://result";
+        String merchantKey = "12345678909";
+        String appId = "com.example.myapp";
+        String action = "batch";
+
+        if (emptyMerchantKey.isChecked()) {
+            merchantKey = "";
+        }
+        if (emptyAppId.isChecked()) {
+            merchantKey = "";
+        }
+        if (emptyCallback.isChecked()) {
+            appId = "";
+        }
+        if (emptyAction.isChecked()) {
+            action = "";
+        }
+
+        String deeplinkPath = "vivapayclient://pay/v1"
+                + "?merchantKey=" + merchantKey
+                + "&appId=" + appId
+                + "&action=" + action
+                + "&callback=" + callback
+                + "&command=" + "close";
+
+        if (batchIdTxt.getText() != null) {
+            if (!batchIdTxt.getText().toString().isEmpty()) {
+                deeplinkPath = deeplinkPath
+                        + "&batchId=" + batchIdTxt.getText().toString();
+            }
+        }
+
+        if (batchNameTxt.getText() != null) {
+            if (!batchNameTxt.getText().toString().isEmpty()) {
+                deeplinkPath = deeplinkPath
+                        + "&batchName=" + batchNameTxt.getText().toString();
+            }
+        }
+
+        Log.d(TAG, "deeplinkPath:" + deeplinkPath);
+
+        Intent payIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(deeplinkPath));
+        payIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        payIntent.addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
+        startActivity(payIntent);
     }
 
     public void tempBtn(View v){
