@@ -3,15 +3,17 @@ package com.vivawallet.demopaymentapp;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import android.util.Log;
-import android.view.View;
 import android.widget.TextView;
 
 public class ReportActivity extends AppCompatActivity {
+
+    TextView virtualIdTxt;
+    TextView sourceTerminalIdTxt;
+    TextView merchantIDTxt;
 
     TextView statusTxt;
     TextView msgTxt;
@@ -49,11 +51,36 @@ public class ReportActivity extends AppCompatActivity {
     TextView commandTxt;
     TextView batchIdTxt;
     TextView batchNameTxt;
+    TextView aid;
+    TextView vatNumber;
+    TextView address;
+    TextView businessDescription;
+    TextView merchantReceiptPAN;
+    TextView cardholderReceiptPAN;
+    TextView transactionReceiptAcquirerZone;
+    TextView cardholderReceiptText;
+    TextView merchantReceiptText;
+    TextView cardholderName;
+    TextView cardExpirationDate;
+    TextView cardholderNameExpirationDateFlags;
+    TextView needsSignature;
+    TextView addQRCode;
+    TextView terminalSerialNumber;
+    TextView currency;
+    TextView errorText;
+    TextView applicationVersion;
+    TextView oldBalance;
+    TextView newBalance;
+    TextView entryMode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_report);
+
+        virtualIdTxt = findViewById(R.id.virtualIdTxt);
+        sourceTerminalIdTxt = findViewById(R.id.sourceTerminalIdTxt);
+        merchantIDTxt = findViewById(R.id.merchantIDTxt);
 
         statusTxt = findViewById(R.id.statusTxt);
         msgTxt = findViewById(R.id.msgTxt);
@@ -94,11 +121,37 @@ public class ReportActivity extends AppCompatActivity {
         batchIdTxt = findViewById(R.id.batchIdTxt);
         batchNameTxt = findViewById(R.id.batchNameTxt);
 
+        aid = findViewById(R.id.aidTxt);
+        vatNumber = findViewById(R.id.vatNumberTxt);
+        address = findViewById(R.id.addressTxt);
+        businessDescription = findViewById(R.id.businessDescriptionTxt);
+        merchantReceiptPAN = findViewById(R.id.merchantReceiptPAN);
+        cardholderReceiptPAN = findViewById(R.id.cardholderReceiptPAN);
+        transactionReceiptAcquirerZone = findViewById(R.id.transactionReceiptAcquirerZone);
+        cardholderReceiptText = findViewById(R.id.cardholderReceiptText);
+        merchantReceiptText = findViewById(R.id.merchantReceiptText);
+        cardholderName = findViewById(R.id.cardholderName);
+        cardExpirationDate = findViewById(R.id.cardExpirationDate);
+        cardholderNameExpirationDateFlags = findViewById(R.id.cardholderNameExpirationDateFlags);
+        needsSignature = findViewById(R.id.needsSignature);
+        addQRCode = findViewById(R.id.addQRCode);
+        terminalSerialNumber = findViewById(R.id.terminalSerialNumber);
+        currency = findViewById(R.id.currency);
+        errorText = findViewById(R.id.errorText);
+        applicationVersion = findViewById(R.id.applicationVersion);
+        oldBalance = findViewById(R.id.oldBalance);
+        newBalance = findViewById(R.id.newBalance);
+        entryMode = findViewById(R.id.entryMode);
+
         Intent i = getIntent();
 
         Uri data = i.getData();
         if (data != null){
             Log.d("deeplinkResponsePath:", data.toString());
+            virtualIdTxt.setText(data.getQueryParameter("virtualId") + "");
+            sourceTerminalIdTxt.setText(data.getQueryParameter("sourceTerminalId") + "");
+            merchantIDTxt.setText(data.getQueryParameter("merchantID") + "");
+
             statusTxt.setText(data.getQueryParameter("status") + "");
             msgTxt.setText(data.getQueryParameter("message") + "");
             actionTxt.setText(data.getQueryParameter("action") + "");
@@ -138,6 +191,29 @@ public class ReportActivity extends AppCompatActivity {
             commandTxt.setText(data.getQueryParameter("command") + "");
             batchIdTxt.setText(data.getQueryParameter("batchId") + "");
             batchNameTxt.setText(data.getQueryParameter("batchName") + "");
+
+            aid.setText(data.getQueryParameter("aid"));
+            vatNumber.setText(data.getQueryParameter("vatNumber"));
+            address.setText(data.getQueryParameter("address"));
+            businessDescription.setText(data.getQueryParameter("businessDescription"));
+
+            merchantReceiptPAN.setText(data.getQueryParameter("merchantReceiptPAN"));
+            cardholderReceiptPAN.setText(data.getQueryParameter("cardholderReceiptPAN"));
+            transactionReceiptAcquirerZone.setText(data.getQueryParameter("transactionReceiptAcquirerZone"));
+            cardholderReceiptText.setText(data.getQueryParameter("cardholderReceiptText"));
+            merchantReceiptText.setText(data.getQueryParameter("merchantReceiptText"));
+            cardholderName.setText(data.getQueryParameter("cardholderName"));
+            cardExpirationDate.setText(data.getQueryParameter("cardExpirationDate"));
+            cardholderNameExpirationDateFlags.setText(data.getQueryParameter("cardholderNameExpirationDateFlags"));
+            needsSignature.setText(data.getQueryParameter("needsSignature"));
+            addQRCode.setText(data.getQueryParameter("addQRCode"));
+            terminalSerialNumber.setText(data.getQueryParameter("terminalSerialNumber"));
+            currency.setText(data.getQueryParameter("currency"));
+            errorText.setText(data.getQueryParameter("errorText"));
+            applicationVersion.setText(data.getQueryParameter("applicationVersion"));
+            oldBalance.setText(data.getQueryParameter("oldBalance"));
+            newBalance.setText(data.getQueryParameter("newBalance"));
+            entryMode.setText(data.getQueryParameter("entryMode"));
         }else{
 
         }

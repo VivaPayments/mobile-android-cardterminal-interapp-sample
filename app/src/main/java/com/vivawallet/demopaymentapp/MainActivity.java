@@ -1,10 +1,15 @@
 package com.vivawallet.demopaymentapp;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
@@ -22,6 +27,7 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -45,6 +51,11 @@ import okhttp3.logging.HttpLoggingInterceptor;
 public class MainActivity extends AppCompatActivity {
     private final String TAG = "DEEP LINK ACTIVITY";
 
+    EditText posActivationClientId;
+    EditText posActivationClientSecret;
+    EditText posActivationSource;
+    EditText posActivationPinCode;
+
     EditText amountTxt;
     EditText tipAmountTxt;
     EditText refTxt;
@@ -65,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
     CheckBox logoOnMerchantReceipt;
     CheckBox printOrderCode;
     CheckBox isvCheck;
+    CheckBox protocolCheck;
 
     DatePickerDialog dialog;
     TextView dateFrom;
@@ -77,6 +89,7 @@ public class MainActivity extends AppCompatActivity {
     LinearLayout ISVClientIdLayout;
     LinearLayout ISVClientSecretLayout;
     LinearLayout ISVSourceCodeLayout;
+    LinearLayout protocolContainer;
 
     EditText prefInstallmentsTxt;
     EditText orderCode;
@@ -89,6 +102,7 @@ public class MainActivity extends AppCompatActivity {
     EditText ISVFeeTxt;
     EditText ISVClientSecretTxt;
     EditText ISVSourceCodeTxt;
+    EditText protocolType;
 
     EditText resellerAmountTxt;
     Button resellerSendBtn;
@@ -112,6 +126,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        posActivationClientId = findViewById(R.id.clientIdForActivation);
+        posActivationClientSecret = findViewById(R.id.clientSecretForActivation);
+        posActivationSource = findViewById(R.id.sourceCodeForActivation);
+        posActivationPinCode = findViewById(R.id.pinCodeForActivation);
 
         emptyMerchantKey = findViewById(R.id.emptyMerchantKey);
         emptyAppId = findViewById(R.id.emptyAppId);
@@ -167,6 +186,9 @@ public class MainActivity extends AppCompatActivity {
         ISVClientSecretTxt = findViewById(R.id.ISVClientSecretTxt);
         batchIdTxt = findViewById(R.id.batchIdText);
         batchNameTxt = findViewById(R.id.batchNameText);
+        protocolType = findViewById(R.id.protocolType);
+        protocolContainer = findViewById(R.id.protocolContainer);
+        protocolCheck = findViewById(R.id.protocolCheck);
 
         if (!installmentsCheck.isChecked()){
             prefInstallmentsLayout.setVisibility(View.GONE);
@@ -217,6 +239,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        protocolCheck.setOnCheckedChangeListener(
+                (compoundButton, b) -> protocolContainer.setVisibility(b ? View.VISIBLE : View.GONE));
+
         token = findViewById(R.id.token);
         sendTockenBtn = findViewById(R.id.sendTockenBtn);
         getTockenBtn = findViewById(R.id.getTockenBtn);
@@ -239,6 +264,47 @@ public class MainActivity extends AppCompatActivity {
         Uri data = intent.getData();
     }
 
+    public void posActivationAction(View v){
+        String callback = "mycallbackscheme://result";
+        String appId = "com.example.myapp";
+        String action = "activatePos";
+
+        if(emptyCallback.isChecked()){
+            appId = "";
+        }
+        if(emptyAction.isChecked()){
+            action = "";
+        }
+
+        String deeplinkPath = "vivapayclient://pay/v1"
+                        + "?appId=" + appId
+                        + "&action=" + action
+                        + "&apikey=" + posActivationClientId.getText().toString()
+                        + "&apiSecret=" + posActivationClientSecret.getText().toString()
+                        + "&sourceID=" + posActivationSource.getText().toString()
+                        + "&pinCode=" + posActivationPinCode.getText().toString();
+
+
+        if (protocolCheck.isChecked()) {
+            deeplinkPath = deeplinkPath + "&protocol=" + protocolType.getText().toString();
+        }
+
+        deeplinkPath = deeplinkPath + "&callback=" + callback;
+
+        Log.d(TAG, "deeplinkPath:" + " " +deeplinkPath);
+
+        Intent payIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(deeplinkPath));
+        payIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        payIntent.addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
+
+        try{
+            startActivity(payIntent);
+        }catch (Exception e){
+
+        }
+    }
+
+    
 
     public void saleAction(View v){
         String amountL = "1200";
@@ -308,6 +374,11 @@ public class MainActivity extends AppCompatActivity {
             deeplinkPath = deeplinkPath + "&ISV_clientSecret=" + ISVClientSecretTxt.getText().toString();
             deeplinkPath = deeplinkPath + "&ISV_sourceCode=" + ISVSourceCodeTxt.getText().toString();
         }
+
+        if (protocolCheck.isChecked()) {
+            deeplinkPath = deeplinkPath + "&protocol=" + protocolType.getText().toString();
+        }
+
         deeplinkPath = deeplinkPath + "&callback=" + callback;
 
         Log.d(TAG, "deeplinkPath:" + " " +deeplinkPath);
@@ -376,6 +447,9 @@ public class MainActivity extends AppCompatActivity {
             reqStr = reqStr + "&amount="+ amountRefund.getText().toString();
         }
 
+        if (protocolCheck.isChecked()) {
+            reqStr = reqStr + "&protocol=" + protocolType.getText().toString();
+        }
 
         Log.d(TAG, "deeplinkPath:" + reqStr);
         Intent payIntent = new Intent(Intent.ACTION_VIEW, Uri.parse( reqStr));
@@ -589,6 +663,13 @@ public class MainActivity extends AppCompatActivity {
                     + "&show_transaction_result=" + result
                     + "&callback=" + callback;
 
+            if (isvCheck.isChecked()) {
+                deeplinkPath = deeplinkPath + "&ISV_amount=" + ISVFeeTxt.getText().toString();
+                deeplinkPath = deeplinkPath + "&ISV_clientId=" + ISVClientIdTxt.getText().toString();
+                deeplinkPath = deeplinkPath + "&ISV_clientSecret=" + ISVClientSecretTxt.getText().toString();
+                deeplinkPath = deeplinkPath + "&ISV_sourceCode=" + ISVSourceCodeTxt.getText().toString();
+            }
+
             Log.d(TAG, "deeplinkPath: " + deeplinkPath);
 
             Intent payIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(deeplinkPath));
@@ -767,6 +848,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void setBusinessDescriptionType(View v) {
         businessDescriptionType.setText((String)v.getTag());
+    }
+
+    public void setProtocolType(View v) {
+        protocolType.setText((String)v.getTag());
     }
 
     // Multi-merchant
@@ -973,6 +1058,34 @@ public class MainActivity extends AppCompatActivity {
                         + "&batchName=" + batchNameTxt.getText().toString();
             }
         }
+
+        Log.d(TAG, "deeplinkPath:" + deeplinkPath);
+
+        Intent payIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(deeplinkPath));
+        payIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        payIntent.addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
+        startActivity(payIntent);
+    }
+
+    public void sendLogsButtonTapped(View v) {
+        String callback = "mycallbackscheme://result";
+        String merchantKey = "12345678909";
+        String appId = "com.example.myapp";
+        String action = "sendLogs";
+
+        if (emptyCallback.isChecked()) {
+            appId = "";
+        }
+
+        if (emptyAction.isChecked()) {
+            action = "";
+        }
+
+        String deeplinkPath = "vivapayclient://pay/v1"
+                + "?merchantKey=" + merchantKey
+                + "&appId=" + appId
+                + "&action=" + action
+                + "&callback=" + callback;
 
         Log.d(TAG, "deeplinkPath:" + deeplinkPath);
 

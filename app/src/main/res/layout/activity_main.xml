@@ -18,8 +18,93 @@
             android:paddingBottom="30dp"
             android:orientation="vertical">
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Pos Activation"
+                android:textSize="25dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#3d3d3f" />
+
+            <TextView
+                android:layout_marginTop="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Api key" />
+
+            <EditText
+                android:layout_marginTop="16dp"
+                android:id="@+id/clientIdForActivation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="pxnzv791b4lz54w2kxd0o0rawmn94umjm991yg5pbsak4.apps.vivapayments.com"
+                />
+
+            <TextView
+                android:layout_marginTop="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Api Secret" />
+
+            <EditText
+                android:layout_marginTop="16dp"
+                android:id="@+id/clientSecretForActivation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Lb6i1sNXZ398nm8E5zU4avd1O5oM0W"/>
+
+            <TextView
+                android:layout_marginTop="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Source ID" />
+
+            <EditText
+                android:layout_marginTop="16dp"
+                android:id="@+id/sourceCodeForActivation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="1111" />
+
+            <TextView
+                android:layout_marginTop="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Pin Code" />
+
+            <EditText
+                android:layout_marginTop="16dp"
+                android:id="@+id/pinCodeForActivation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="1212" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:onClick="posActivationAction"
+                android:text="POS ACTIVATION" />
+
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#3d3d3f" />
 
             <CheckBox
+                android:layout_marginTop="16dp"
                 android:id="@+id/emptyMerchantKey"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -212,6 +297,132 @@
                     android:text="10" />
             </LinearLayout>
 
+            <CheckBox
+                android:id="@+id/protocolCheck"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Send protocol" />
+
+            <LinearLayout
+                android:id="@+id/protocolContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="32dp"
+                android:orientation="vertical"
+                android:visibility="gone"
+                tools:visibility="visible">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="32dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:text="Protocol Type" />
+
+                    <EditText
+                        android:id="@+id/protocolType"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:gravity="center"
+                        android:text="int_default" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="32dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/intDefault"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:onClick="setProtocolType"
+                        android:tag="int_default"
+                        android:text="int_default"
+                        android:textAllCaps="false" />
+
+
+                    <Button
+                        android:id="@+id/intFrob"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:onClick="setProtocolType"
+                        android:tag="int_frob"
+                        android:text="int_frob"
+                        android:textAllCaps="false" />
+
+
+                    <Button
+                        android:id="@+id/intWorldline"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:onClick="setProtocolType"
+                        android:tag="int_worldline"
+                        android:text="int_worldline"
+                        android:textAllCaps="false" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="32dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/intZvt"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:onClick="setProtocolType"
+                        android:tag="int_zvt"
+                        android:text="int_zvt"
+                        android:textAllCaps="false" />
+
+
+                    <Button
+                        android:id="@+id/intApconcert"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:onClick="setProtocolType"
+                        android:tag="int_apconcert"
+                        android:text="int_apconcert"
+                        android:textAllCaps="false" />
+
+
+                    <Button
+                        android:id="@+id/intRcb"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:onClick="setProtocolType"
+                        android:tag="int_rcb"
+                        android:text="int_rcb"
+                        android:textAllCaps="false" />
+
+                </LinearLayout>
+            </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/ISVClientIdLayout"
                 android:layout_width="match_parent"
@@ -234,7 +445,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:gravity="center"
-                    android:text="" />
+                    android:text="auyf99x03sachvn3f5ogldykz8214c2o4vl8cvvs97p19.apps.vivapayments.com" />
             </LinearLayout>
 
             <LinearLayout
@@ -259,7 +470,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:gravity="center"
-                    android:text="" />
+                    android:text="Vk8ZcKr5Lyep4J0yBDby65Z3zpGjHL" />
             </LinearLayout>
 
             <LinearLayout
@@ -972,7 +1183,7 @@
                 android:id="@+id/resellerMerchId"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="ddcaea00-2cf8-4485-80af-5ddcd6d14b2a" />
+                android:text="c21ac4b3-b1e1-4e7c-a65e-aedee7412321" />
 
 
             <LinearLayout
@@ -1252,6 +1463,34 @@
                     android:text="Close Batch" />
 
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="Send Logs"
+                    android:textSize="25sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#3d3d3f" />
+
+                <Button
+                    android:id="@+id/sendLogsButton"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="sendLogsButtonTapped"
+                    android:text="Send Logs" />
+
+            </LinearLayout>
+
         </LinearLayout>
 
     </ScrollView>
