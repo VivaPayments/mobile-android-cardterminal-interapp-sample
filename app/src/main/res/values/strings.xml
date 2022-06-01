@@ -1,4 +1,18 @@
 <resources>
     <string name="app_name">DemoPaymentApp</string>
     <string name="title_activity_report">ReportActivity</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="unattended_pin_for_unattended">pin for unattended</string>
+    <string name="unattended_set_unattended_mode">SET UNATTENDED MODE</string>
+    <string name="unattended_set_pin">Set Pin</string>
+    <string name="unattended_modes">Unattended Modes</string>
+    <string name="menu_unattended">Unattended</string>
+
+    <string-array name="unattendedModes">
+        <item>Attended</item>
+        <item>Unattended</item>
+        <item>Attended full screen</item>
+    </string-array>
+
 </resources>

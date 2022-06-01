@@ -6,13 +6,21 @@ import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.net.Uri;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentContainerView;
+import androidx.fragment.app.FragmentManager;
 
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -25,6 +33,7 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.vivawallet.demopaymentapp.fragments.UnattendedFragment;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -47,15 +56,18 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 import okhttp3.logging.HttpLoggingInterceptor;
+import timber.log.Timber;
+import timber.log.Timber.DebugTree;
 
 public class MainActivity extends AppCompatActivity {
-    private final String TAG = "DEEP LINK ACTIVITY";
+    public static final String TAG = "DEEP LINK ACTIVITY";
 
     EditText posActivationClientId;
     EditText posActivationClientSecret;
     EditText posActivationSource;
     EditText posActivationPinCode;
 
+    FragmentContainerView containerView;
     EditText amountTxt;
     EditText tipAmountTxt;
     EditText refTxt;
@@ -126,11 +138,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        posActivationClientId = findViewById(R.id.clientIdForActivation);
-        posActivationClientSecret = findViewById(R.id.clientSecretForActivation);
-        posActivationSource = findViewById(R.id.sourceCodeForActivation);
-        posActivationPinCode = findViewById(R.id.pinCodeForActivation);
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(myToolbar);
+        Timber.plant(new DebugTree());
 
         emptyMerchantKey = findViewById(R.id.emptyMerchantKey);
         emptyAppId = findViewById(R.id.emptyAppId);
@@ -189,6 +199,11 @@ public class MainActivity extends AppCompatActivity {
         protocolType = findViewById(R.id.protocolType);
         protocolContainer = findViewById(R.id.protocolContainer);
         protocolCheck = findViewById(R.id.protocolCheck);
+        containerView = findViewById(R.id.fragment_container_view);
+        posActivationClientId = findViewById(R.id.clientIdForActivation);
+        posActivationClientSecret = findViewById(R.id.clientSecretForActivation);
+        posActivationSource = findViewById(R.id.sourceCodeForActivation);
+        posActivationPinCode = findViewById(R.id.pinCodeForActivation);
 
         if (!installmentsCheck.isChecked()){
             prefInstallmentsLayout.setVisibility(View.GONE);
@@ -1114,4 +1129,37 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+        return true;
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.action_unattendedModes) {
+            loadFragment(UnattendedFragment.newInstance());
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        containerView.setVisibility(View.GONE);
+    }
+
+    private void  loadFragment(Fragment fragment){
+        containerView.setVisibility(View.VISIBLE);
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction()
+                .replace(R.id.fragment_container_view, fragment, null)
+                .setReorderingAllowed(true)
+                .addToBackStack("name") // name can be null
+                .commit();
+
+    }
 }

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="20dp">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/unattendedModesTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="@string/unattended_modes"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@id/spinnerModes"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Spinner
+            android:id="@+id/spinnerModes"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:minHeight="32dp"
+            android:spinnerMode="dropdown"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/unattendedModesTextView"
+            app:layout_constraintTop_toTopOf="@id/unattendedModesTextView" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/pinTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/unattended_set_pin"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@id/pinEditText"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/unattendedModesTextView" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/pinEditText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/unattended_pin_for_unattended"
+            app:layout_constraintBottom_toBottomOf="@id/pinTextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/spinnerModes"
+            app:layout_constraintTop_toBottomOf="@id/spinnerModes" />
+
+        <Button
+            android:id="@+id/btnSendUnattended"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:text="@string/unattended_set_unattended_mode"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
