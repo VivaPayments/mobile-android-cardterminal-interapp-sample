@@ -57,7 +57,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="pxnzv791b4lz54w2kxd0o0rawmn94umjm991yg5pbsak4.apps.vivapayments.com"
+                android:text="m70hv6w877y1rd57959y5rsj99ruj0hqp8pm6hhh9xc55.apps.vivapayments.com"
                 />
 
             <TextView
@@ -73,7 +73,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Lb6i1sNXZ398nm8E5zU4avd1O5oM0W"/>
+                android:text="7P1U3cVf4mH9p6UqjpYp4An1y8A3yD"/>
 
             <TextView
                 android:layout_marginTop="16dp"
@@ -104,6 +104,30 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="1212" />
+
+            <CheckBox
+                android:layout_marginTop="16dp"
+                android:id="@+id/skipSetupExternalDevice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="Skip External Device setup" />
+
+            <CheckBox
+                android:layout_marginTop="16dp"
+                android:id="@+id/activateMoto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="Activate MO/TO" />
+
+            <CheckBox
+                android:layout_marginTop="16dp"
+                android:id="@+id/activateQR"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="Activate QR codes" />
 
             <Button
                 android:layout_width="match_parent"

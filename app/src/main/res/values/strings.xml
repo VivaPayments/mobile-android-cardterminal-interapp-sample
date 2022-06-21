@@ -11,8 +11,8 @@
 
     <string-array name="unattendedModes">
         <item>Attended</item>
-        <item>Unattended</item>
-        <item>Attended full screen</item>
+        <item>Semi Unattended</item>
+        <item>Full Screen Unattended</item>
     </string-array>
 
 </resources>

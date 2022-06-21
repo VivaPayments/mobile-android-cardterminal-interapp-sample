@@ -66,6 +66,10 @@ public class MainActivity extends AppCompatActivity {
     EditText posActivationClientSecret;
     EditText posActivationSource;
     EditText posActivationPinCode;
+    CheckBox skipExternalDeviceSetup;
+    CheckBox activateMoto;
+    CheckBox activateQR;
+
 
     FragmentContainerView containerView;
     EditText amountTxt;
@@ -141,6 +145,15 @@ public class MainActivity extends AppCompatActivity {
         Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(myToolbar);
         Timber.plant(new DebugTree());
+
+        posActivationClientId = findViewById(R.id.clientIdForActivation);
+        posActivationClientSecret = findViewById(R.id.clientSecretForActivation);
+        posActivationSource = findViewById(R.id.sourceCodeForActivation);
+        posActivationPinCode = findViewById(R.id.pinCodeForActivation);
+
+        skipExternalDeviceSetup = findViewById(R.id.skipSetupExternalDevice);
+        activateMoto = findViewById(R.id.activateMoto);
+        activateQR= findViewById(R.id.activateQR);
 
         emptyMerchantKey = findViewById(R.id.emptyMerchantKey);
         emptyAppId = findViewById(R.id.emptyAppId);
@@ -297,8 +310,10 @@ public class MainActivity extends AppCompatActivity {
                         + "&apikey=" + posActivationClientId.getText().toString()
                         + "&apiSecret=" + posActivationClientSecret.getText().toString()
                         + "&sourceID=" + posActivationSource.getText().toString()
-                        + "&pinCode=" + posActivationPinCode.getText().toString();
-
+                        + "&pinCode=" + posActivationPinCode.getText().toString()
+                        + "&skipExternalDeviceSetup=" + skipExternalDeviceSetup.isChecked()
+                        + "&activateMoto=" + activateMoto.isChecked()
+                        + "&activateQRCodes=" + activateQR.isChecked();
 
         if (protocolCheck.isChecked()) {
             deeplinkPath = deeplinkPath + "&protocol=" + protocolType.getText().toString();
