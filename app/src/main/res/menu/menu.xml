@@ -5,5 +5,9 @@
         android:id="@+id/action_unattendedModes"
         android:title="@string/menu_unattended"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/action_printingSettings"
+        android:title="@string/printing_settings"
+        app:showAsAction="never" />
 
 </menu>

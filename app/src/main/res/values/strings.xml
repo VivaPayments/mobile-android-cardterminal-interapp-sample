@@ -8,6 +8,7 @@
     <string name="unattended_set_pin">Set Pin</string>
     <string name="unattended_modes">Unattended Modes</string>
     <string name="menu_unattended">Unattended</string>
+    <string name="printing_settings">Printing Settings</string>
 
     <string-array name="unattendedModes">
         <item>Attended</item>

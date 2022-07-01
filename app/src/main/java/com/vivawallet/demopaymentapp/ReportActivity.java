@@ -7,6 +7,7 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
 public class ReportActivity extends AppCompatActivity {
@@ -48,6 +49,9 @@ public class ReportActivity extends AppCompatActivity {
     TextView ISV_clientId;
     TextView ISV_clientSecret;
     TextView ISV_sourceCode;
+    TextView ISV_merchantId;
+    TextView ISV_currencyCode;
+    TextView ISV_MerchantSourceCode, ISV_customerTrns, ISV_ClientTransactionId;
     TextView commandTxt;
     TextView batchIdTxt;
     TextView batchNameTxt;
@@ -72,6 +76,7 @@ public class ReportActivity extends AppCompatActivity {
     TextView oldBalance;
     TextView newBalance;
     TextView entryMode;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,6 +121,11 @@ public class ReportActivity extends AppCompatActivity {
         ISV_clientId = findViewById(R.id.ISV_clientId);
         ISV_clientSecret = findViewById(R.id.ISV_clientSecret);
         ISV_sourceCode = findViewById(R.id.ISV_sourceCode);
+        ISV_merchantId = findViewById(R.id.ISV_merchantId);
+        ISV_currencyCode = findViewById(R.id.ISV_currencyCode);
+        ISV_MerchantSourceCode = findViewById(R.id.ISV_merchantSourceCode);
+        ISV_customerTrns = findViewById(R.id.ISV_customerTrns);
+        ISV_ClientTransactionId = findViewById(R.id.ISV_clientTransactionId);
 
         commandTxt = findViewById(R.id.commandTxt);
         batchIdTxt = findViewById(R.id.batchIdTxt);
@@ -187,6 +197,11 @@ public class ReportActivity extends AppCompatActivity {
             ISV_clientId.setText(data.getQueryParameter("ISV_clientId") + "");
             ISV_clientSecret.setText(data.getQueryParameter("ISV_clientSecret") + "");
             ISV_sourceCode.setText(data.getQueryParameter("ISV_sourceCode") + "");
+            ISV_merchantId.setText(data.getQueryParameter("ISV_merchantId") + "");
+            ISV_currencyCode.setText(data.getQueryParameter("ISV_currencyCode") + "");
+            ISV_MerchantSourceCode.setText(data.getQueryParameter("ISV_merchantSourceCode") + "");
+            ISV_customerTrns.setText(data.getQueryParameter("ISV_customerTrns") + "");
+            ISV_ClientTransactionId.setText(data.getQueryParameter("ISV_clientTransactionId") + "");
 
             commandTxt.setText(data.getQueryParameter("command") + "");
             batchIdTxt.setText(data.getQueryParameter("batchId") + "");

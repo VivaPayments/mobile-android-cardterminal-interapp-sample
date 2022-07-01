@@ -30,8 +30,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            android:paddingBottom="30dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingBottom="30dp">
 
             <TextView
                 android:layout_width="match_parent"
@@ -45,63 +45,62 @@
                 android:background="#3d3d3f" />
 
             <TextView
-                android:layout_marginTop="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
                 android:layout_weight="1"
                 android:text="Api key" />
 
             <EditText
-                android:layout_marginTop="16dp"
                 android:id="@+id/clientIdForActivation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
                 android:gravity="center"
-                android:text="m70hv6w877y1rd57959y5rsj99ruj0hqp8pm6hhh9xc55.apps.vivapayments.com"
-                />
+                android:text="pxnzv791b4lz54w2kxd0o0rawmn94umjm991yg5pbsak4.apps.vivapayments.com" />
 
             <TextView
-                android:layout_marginTop="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
                 android:layout_weight="1"
                 android:text="Api Secret" />
 
             <EditText
-                android:layout_marginTop="16dp"
                 android:id="@+id/clientSecretForActivation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
                 android:gravity="center"
-                android:text="7P1U3cVf4mH9p6UqjpYp4An1y8A3yD"/>
+                android:text="Lb6i1sNXZ398nm8E5zU4avd1O5oM0W" />
 
             <TextView
-                android:layout_marginTop="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
                 android:layout_weight="1"
                 android:text="Source ID" />
 
             <EditText
-                android:layout_marginTop="16dp"
                 android:id="@+id/sourceCodeForActivation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
                 android:gravity="center"
                 android:text="1111" />
 
             <TextView
-                android:layout_marginTop="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
                 android:layout_weight="1"
                 android:text="Pin Code" />
 
             <EditText
-                android:layout_marginTop="16dp"
                 android:id="@+id/pinCodeForActivation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
                 android:gravity="center"
                 android:text="1212" />
 
@@ -137,16 +136,16 @@
                 android:text="POS ACTIVATION" />
 
             <LinearLayout
-                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
+                android:layout_marginTop="10dp"
                 android:background="#3d3d3f" />
 
             <CheckBox
-                android:layout_marginTop="16dp"
                 android:id="@+id/emptyMerchantKey"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
                 android:text="Send Empty Merchant Key" />
 
             <CheckBox
@@ -182,8 +181,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:visibility="visible"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="visible">
 
                 <TextView
                     android:layout_width="0dp"
@@ -204,8 +203,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:visibility="visible"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="visible">
 
                 <TextView
                     android:layout_width="0dp"
@@ -222,11 +221,12 @@
                     android:text="1" />
 
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:visibility="visible"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="visible">
 
                 <TextView
                     android:layout_width="0dp"
@@ -239,22 +239,23 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
-                    android:gravity="center"/>
+                    android:gravity="center" />
 
             </LinearLayout>
+
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:tag="000"
                 android:onClick="saleAction"
+                android:tag="000"
                 android:text="SALE" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:visibility="gone"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="gone">
 
                 <TextView
                     android:layout_width="0dp"
@@ -289,20 +290,21 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:textColor="#3d3d3f"
-                    android:text="Prefered installments: "
-                    android:textSize="17sp"
-                    android:minHeight="50dp"
+                    android:layout_weight="2"
                     android:gravity="center"
                     android:lines="3"
-                    android:layout_weight="2" />
+                    android:minHeight="50dp"
+                    android:text="Prefered installments: "
+                    android:textColor="#3d3d3f"
+                    android:textSize="17sp" />
+
                 <EditText
                     android:id="@+id/prefInstallmentsTxt"
                     android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:layout_height="wrap_content"
-                    android:text="0"/>
+                    android:text="0" />
             </LinearLayout>
 
             <CheckBox
@@ -460,6 +462,7 @@
                         android:textAllCaps="false" />
 
                 </LinearLayout>
+
             </LinearLayout>
 
             <LinearLayout
@@ -532,59 +535,207 @@
                     android:id="@+id/ISVSourceCodeTxt"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_weight="2"
                     android:gravity="center"
                     android:text="123456" />
+            </LinearLayout>
+
+            <CheckBox
+                android:id="@+id/ISVMerchantCheck"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:text="Merchant"
+                android:textAlignment="viewStart"
+                android:textSize="15sp" />
+
+            <LinearLayout
+                android:id="@+id/ISVMerchantLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:id="@+id/ISVMerchantIdLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:visibility="visible">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:text="Merchant ID: "
+                        android:textColor="#3d3d3f"
+                        android:textSize="13sp" />
+
+                    <EditText
+                        android:id="@+id/ISVMerchantIdTxt"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:gravity="center"
+                        android:text="ddcaea00-2cf8-4485-80af-5ddcd6d14b2a" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ISVMerchantCurrencyLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:visibility="visible">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:text="Merchant Currency: "
+                        android:textColor="#3d3d3f"
+                        android:textSize="13sp" />
+
+                    <EditText
+                        android:id="@+id/ISVMerchantCurrencyTxt"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:gravity="center"
+                        android:text="978" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:visibility="visible">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:lines="2"
+                        android:layout_gravity="center"
+                        android:textColor="#3d3d3f"
+                        android:textSize="13sp"
+                        android:text="Merchant Source Code:" />
+                    <EditText
+                        android:id="@+id/ISVMerchantSourceCodeTxt"
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:gravity="center"
+                        android:layout_height="wrap_content"
+                        android:text="Default"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:visibility="visible">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:lines="2"
+                        android:layout_gravity="center"
+                        android:textColor="#3d3d3f"
+                        android:textSize="13sp"
+                        android:text="CustomerTrns:" />
+                    <EditText
+                        android:id="@+id/ISVCustomerTrnsTxt"
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:gravity="center"
+                        android:layout_height="wrap_content"
+                        android:text="123yoyo123"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:visibility="visible">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:lines="2"
+                        android:layout_gravity="center"
+                        android:textColor="#3d3d3f"
+                        android:textSize="13sp"
+                        android:text="ClientTransactionId:" />
+                    <EditText
+                        android:id="@+id/ISVMerchantTrnsTxt"
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:gravity="center"
+                        android:layout_height="wrap_content"
+                        android:text="123456qwerty"/>
+                </LinearLayout>
+
             </LinearLayout>
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:onClick="saleAction"
                 android:tag="101"
-                android:onClick="saleAction"
                 android:text="SALE 1.01€" />
+
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:onClick="saleAction"
                 android:tag="12"
-                android:onClick="saleAction"
                 android:text="SALE 12€" />
+
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:onClick="saleAction"
                 android:tag="499"
-                android:onClick="saleAction"
                 android:text="SALE 4.99€" />
+
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:onClick="saleAction"
                 android:tag="55"
-                android:onClick="saleAction"
                 android:text="SALE 55€" />
+
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:onClick="saleAction"
                 android:tag="6482"
-                android:onClick="saleAction"
                 android:text="SALE 64.82€" />
+
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:onClick="saleAction"
                 android:tag="0.5"
-                android:onClick="saleAction"
                 android:text="SALE 0.5€ + tip 0.15€" />
+
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:tag="6"
                 android:onClick="saleAction"
+                android:tag="6"
                 android:text="6€ MISSING CALLBACK" />
 
 
@@ -599,6 +750,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="#3d3d3f" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -620,6 +772,7 @@
                     android:text="" />
 
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -641,6 +794,7 @@
                     android:text="" />
 
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -662,6 +816,7 @@
                     android:text="" />
 
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -671,8 +826,8 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:layout_gravity="center"
+                    android:layout_weight="1"
                     android:text="Amount\n(in Cents):" />
 
                 <EditText
@@ -684,11 +839,12 @@
                     android:text="" />
 
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/dateFromContainer"
                 android:layout_width="match_parent"
-                android:layout_marginBottom="32dp"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="32dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -707,6 +863,7 @@
                     android:gravity="center" />
 
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/dateToContainer"
                 android:layout_width="match_parent"
@@ -729,13 +886,13 @@
                     android:gravity="center" />
 
             </LinearLayout>
+
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:onClick="cancelTransactionAction"
                 android:layout_marginTop="10dp"
+                android:onClick="cancelTransactionAction"
                 android:text="Cancel Transaction" />
-
 
 
             <LinearLayout
@@ -756,6 +913,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="#3d3d3f" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -765,8 +923,8 @@
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
                         android:layout_gravity="center"
+                        android:layout_weight="1"
                         android:text="Amount\n(in Cents):" />
 
                     <EditText
@@ -779,24 +937,26 @@
                         android:text="" />
 
                 </LinearLayout>
+
                 <TextView
                     android:id="@+id/billFees"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="0"
-                    android:layout_margin="10dp"
                     android:layout_gravity="center"
+                    android:layout_margin="10dp"
+                    android:text="0"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
+
                 <TextView
                     android:id="@+id/token"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="no token"
-                    android:layout_margin="10dp"
                     android:layout_gravity="center"
+                    android:layout_margin="10dp"
+                    android:text="no token"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
@@ -804,21 +964,19 @@
 
                 <Button
                     android:id="@+id/getTockenBtn"
-                    android:layout_marginTop="20dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
                     android:onClick="getBillPaymentToken"
-                    android:text="GET TOKEN"
-                    />
+                    android:text="GET TOKEN" />
 
                 <Button
                     android:id="@+id/sendTockenBtn"
-                    android:layout_marginTop="20dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
                     android:onClick="sendBillPaymentToken"
-                    android:text="SEND TOKEN"
-                    />
+                    android:text="SEND TOKEN" />
 
             </LinearLayout>
 
@@ -833,6 +991,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="#3d3d3f" />
+
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -929,279 +1088,11 @@
 
                 <Button
                     android:id="@+id/abortBtn"
-                    android:layout_marginTop="20dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
                     android:onClick="abortButtonTapped"
-                    android:text="ABORT"
-                    />
-
-            </LinearLayout>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="Set printing options"
-                android:textSize="25sp" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#3d3d3f" />
-
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical|start"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:text="PRINT ORDER CODE BARCODE" />
-
-                <CheckBox
-                    android:id="@+id/print_order_code"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical|end"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="12dp"
-                    android:layout_marginBottom="8dp" />
-            </FrameLayout>
-
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical|start"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:text="PRINT LOGO ON MERCHANT RECEIPT" />
-
-                <CheckBox
-                    android:id="@+id/logo_on_merchant_receipt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical|end"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="12dp"
-                    android:layout_marginBottom="8dp" />
-            </FrameLayout>
-
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical|start"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:text="PRINT VAT ON MERCHANT RECEIPT" />
-
-                <CheckBox
-                    android:id="@+id/vat_on_merchant_receipt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical|end"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="12dp"
-                    android:layout_marginBottom="8dp" />
-            </FrameLayout>
-
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical|start"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:text="PRINT BUSINESS DESCRIPTION" />
-
-                <CheckBox
-                    android:id="@+id/print_business_description"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical|end"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="12dp"
-                    android:layout_marginBottom="8dp" />
-            </FrameLayout>
-
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical|start"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:text="PRINT ADDRESS" />
-
-                <CheckBox
-                    android:id="@+id/print_address"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical|end"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="12dp"
-                    android:layout_marginBottom="8dp" />
-            </FrameLayout>
-
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical|start"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:text="PRINT MERCHANT RECEIPT" />
-
-                <CheckBox
-                    android:id="@+id/print_merchant_receipt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical|end"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="12dp"
-                    android:layout_marginBottom="8dp" />
-            </FrameLayout>
-
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical|start"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:text="PRINT CUSTOMER RECEIPT" />
-
-                <CheckBox
-                    android:id="@+id/print_customer_receipt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical|end"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="12dp"
-                    android:layout_marginBottom="8dp" />
-            </FrameLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="32dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:text="Business Description Type" />
-
-                <EditText
-                    android:id="@+id/business_description_type"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:gravity="center"
-                    android:text="businessName" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="32dp"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/businessName"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:onClick="setBusinessDescriptionType"
-                    android:tag="businessName"
-                    android:text="BUSINESS NAME" />
-
-
-                <Button
-                    android:id="@+id/tradeName"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:onClick="setBusinessDescriptionType"
-                    android:tag="tradeName"
-                    android:text="TRADE NAME" />
-
-
-                <Button
-                    android:id="@+id/storeName"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:onClick="setBusinessDescriptionType"
-                    android:tag="storeName"
-                    android:text="STORE NAME" />
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="32dp"
-                android:orientation="horizontal">
-
-                <Button
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:onClick="setPrintingSettings"
-                    android:tag="businessName"
-                    android:text="SET PRINTING SETTINGS" />
+                    android:text="ABORT" />
 
             </LinearLayout>
 
@@ -1210,14 +1101,17 @@
                 android:layout_height="wrap_content"
                 android:text="MultiMerchant"
                 android:textSize="25dp" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="#3d3d3f" />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text=" test merchant:" />
+
             <EditText
                 android:id="@+id/resellerMerchId"
                 android:layout_width="match_parent"
@@ -1228,171 +1122,179 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
                 android:orientation="horizontal"
                 android:paddingLeft="10dp"
-                android:layout_marginBottom="10dp"
                 android:paddingRight="10dp">
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_weight="1"
                     android:lines="2"
-                    android:layout_gravity="center"
                     android:text="Reseller Source:" />
+
                 <EditText
                     android:id="@+id/resellerSourceCodeTxt"
                     android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:gravity="center"
-                    android:layout_height="wrap_content"
-                    android:text="Default"/>
+                    android:text="Default" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
                 android:orientation="horizontal"
                 android:paddingLeft="10dp"
-                android:layout_marginBottom="10dp"
                 android:paddingRight="10dp">
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_weight="1"
                     android:lines="2"
-                    android:layout_gravity="center"
                     android:text="Multi merchant Source Code:" />
+
                 <EditText
                     android:id="@+id/multimerchantSourceCodeTxt"
                     android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:gravity="center"
-                    android:layout_height="wrap_content"
-                    android:text="Default"/>
+                    android:text="Default" />
             </LinearLayout>
 
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
                 android:orientation="horizontal"
                 android:paddingLeft="10dp"
-                android:layout_marginBottom="10dp"
                 android:paddingRight="10dp">
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_weight="1"
                     android:lines="2"
-                    android:layout_gravity="center"
                     android:text="CustomerTrns:" />
+
                 <EditText
                     android:id="@+id/customerTrnsTxt"
                     android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:gravity="center"
-                    android:layout_height="wrap_content"
-                    android:text="123yoyo123"/>
+                    android:text="123yoyo123" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
                 android:orientation="horizontal"
                 android:paddingLeft="10dp"
-                android:layout_marginBottom="10dp"
                 android:paddingRight="10dp">
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_weight="1"
                     android:lines="2"
-                    android:layout_gravity="center"
                     android:text="ClientTransactionId:" />
+
                 <EditText
                     android:id="@+id/merchantTrnsTxt"
                     android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:gravity="center"
-                    android:layout_height="wrap_content"
-                    android:text="123456qwerty"/>
+                    android:text="123456qwerty" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
                 android:orientation="horizontal"
                 android:paddingLeft="10dp"
-                android:layout_marginBottom="10dp"
                 android:paddingRight="10dp">
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_weight="1"
                     android:lines="2"
-                    android:layout_gravity="center"
                     android:text="Currency iso code:" />
+
                 <EditText
                     android:id="@+id/currencyCodeTxt"
                     android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:gravity="center"
-                    android:layout_height="wrap_content"
-                    android:text="978"/>
+                    android:text="978" />
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/resellerAmountLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
                 android:orientation="horizontal"
                 android:paddingLeft="10dp"
-                android:layout_marginBottom="10dp"
                 android:paddingRight="10dp">
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_weight="1"
                     android:lines="2"
-                    android:layout_gravity="center"
                     android:text="Amount:\n(in Cents)" />
+
                 <EditText
                     android:id="@+id/resellerAmountTxt"
                     android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:gravity="center"
-                    android:layout_height="wrap_content"
-                    android:text="1500"/>
+                    android:text="1500" />
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/resellerTipAmountLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
                 android:orientation="horizontal"
                 android:paddingLeft="10dp"
-                android:layout_marginBottom="10dp"
                 android:paddingRight="10dp">
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_weight="1"
                     android:lines="2"
-                    android:layout_gravity="center"
                     android:text="Tip Amount:\n(in Cents)" />
+
                 <EditText
                     android:id="@+id/resellerTipAmountTxt"
                     android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:gravity="center"
-                    android:layout_height="wrap_content"
-                    android:text="10"/>
+                    android:text="10" />
             </LinearLayout>
 
             <Button
@@ -1402,14 +1304,15 @@
                 android:layout_marginTop="10dp"
                 android:onClick="sendResellerOrder"
                 android:text="Send Order" />
+
             <Button
 
-                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:onClick="tempBtn"
-                android:text="temp Btn" />
+                android:text="temp Btn"
+                android:visibility="gone" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -1433,12 +1336,11 @@
 
                 <Button
                     android:id="@+id/foregroundBtn"
-                    android:layout_marginTop="20dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
                     android:onClick="foregroundButtonTapped"
-                    android:text="FOREGROUND"
-                    />
+                    android:text="FOREGROUND" />
 
             </LinearLayout>
 
@@ -1487,17 +1389,17 @@
 
                 <Button
                     android:id="@+id/openBatchButton"
-                    android:layout_marginTop="20dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
                     android:onClick="openBatchButtonTapped"
                     android:text="Open Batch" />
 
                 <Button
                     android:id="@+id/closeBatchButton"
-                    android:layout_marginTop="20dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
                     android:onClick="closeBatchButtonTapped"
                     android:text="Close Batch" />
 
@@ -1522,9 +1424,9 @@
 
                 <Button
                     android:id="@+id/sendLogsButton"
-                    android:layout_marginTop="20dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
                     android:onClick="sendLogsButtonTapped"
                     android:text="Send Logs" />
 

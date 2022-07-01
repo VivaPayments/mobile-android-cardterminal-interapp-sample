@@ -58,9 +58,7 @@ public class UnattendedFragment extends Fragment {
             }
         });
 
-        binding.btnSendUnattended.setOnClickListener(view1 -> {
-            sendUnattendedMode(selectedMode);
-        });
+        binding.btnSendUnattended.setOnClickListener(view1 -> sendUnattendedMode(selectedMode));
 
         return view;
     }

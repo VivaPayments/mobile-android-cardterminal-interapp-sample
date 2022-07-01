@@ -1,20 +1,9 @@
 package com.vivawallet.demopaymentapp;
 
-import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.net.Uri;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentContainerView;
-import androidx.fragment.app.FragmentManager;
-
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
@@ -31,12 +20,16 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
-
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentContainerView;
+import androidx.fragment.app.FragmentManager;
 import com.google.gson.Gson;
+import com.vivawallet.demopaymentapp.fragments.PrintingSettingsFragment;
 import com.vivawallet.demopaymentapp.fragments.UnattendedFragment;
-
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -47,7 +40,6 @@ import java.util.Locale;
 import java.util.TimeZone;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
-
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.MediaType;
@@ -84,13 +76,6 @@ public class MainActivity extends AppCompatActivity {
     CheckBox receiptCheck;
     CheckBox ratingCheck;
     CheckBox resultCheck;
-    CheckBox printMerchantReceipt;
-    CheckBox printCustomerReceipt;
-    CheckBox printAddress;
-    CheckBox printBusinessDescription;
-    CheckBox vatOnMerchantReceipt;
-    CheckBox logoOnMerchantReceipt;
-    CheckBox printOrderCode;
     CheckBox isvCheck;
     CheckBox protocolCheck;
 
@@ -105,6 +90,7 @@ public class MainActivity extends AppCompatActivity {
     LinearLayout ISVClientIdLayout;
     LinearLayout ISVClientSecretLayout;
     LinearLayout ISVSourceCodeLayout;
+    LinearLayout ISVMerchantLayout;
     LinearLayout protocolContainer;
 
     EditText prefInstallmentsTxt;
@@ -112,12 +98,17 @@ public class MainActivity extends AppCompatActivity {
     EditText shortOrderCode;
     EditText amountRefund;
     EditText amountBill;
-    EditText businessDescriptionType;
     EditText paymentReferenceTxt;
     EditText ISVClientIdTxt;
     EditText ISVFeeTxt;
     EditText ISVClientSecretTxt;
     EditText ISVSourceCodeTxt;
+    CheckBox ISVMerchantCheck;
+    EditText ISVMerchantIdTxt;
+    EditText ISVMerchantCurrencyTxt;
+    EditText ISVMerchantSourceCodeTxt;
+    EditText ISVCustomerTrnsTxt;
+    EditText ISVClientTransactionId;
     EditText protocolType;
 
     EditText resellerAmountTxt;
@@ -179,22 +170,14 @@ public class MainActivity extends AppCompatActivity {
         dateToContainer = findViewById(R.id.dateToContainer);
         amountBill = findViewById(R.id.amountBill);
         billFees = findViewById(R.id.billFees);
-        businessDescriptionType = findViewById(R.id.business_description_type);
-        printMerchantReceipt = findViewById(R.id.print_merchant_receipt);
-        printAddress = findViewById(R.id.print_address);
-        printBusinessDescription = findViewById(R.id.print_business_description);
-        vatOnMerchantReceipt = findViewById(R.id.vat_on_merchant_receipt);
-        logoOnMerchantReceipt = findViewById(R.id.logo_on_merchant_receipt);
-        printOrderCode = findViewById(R.id.print_order_code);
         resellerAmountTxt = findViewById(R.id.resellerAmountTxt);
         resellerSendBtn = findViewById(R.id.resellerSendBtn);
-        printCustomerReceipt = findViewById(R.id.print_customer_receipt);
         isvCheck = findViewById(R.id.isvCheck);
         ISVClientIdTxt = findViewById(R.id.ISVClientIdTxt);
         ISVFeeTxt = findViewById(R.id.ISVFeeTxt);
         ISVSourceCodeLayout = findViewById(R.id.ISVSourceCodeLayout);
         ISVClientSecretLayout = findViewById(R.id.ISVClientSecretLayout);
-
+        ISVMerchantLayout = findViewById(R.id.ISVMerchantLayout);
         resellerMerchId = findViewById(R.id.resellerMerchId);
         currencyCode = findViewById(R.id.currencyCodeTxt);
 
@@ -207,6 +190,12 @@ public class MainActivity extends AppCompatActivity {
         ISVFeeLayout = findViewById(R.id.ISVFeeLayout);
         ISVSourceCodeTxt = findViewById(R.id.ISVSourceCodeTxt);
         ISVClientSecretTxt = findViewById(R.id.ISVClientSecretTxt);
+        ISVMerchantCheck = findViewById(R.id.ISVMerchantCheck);
+        ISVMerchantIdTxt = findViewById(R.id.ISVMerchantIdTxt);
+        ISVMerchantCurrencyTxt = findViewById(R.id.ISVMerchantCurrencyTxt);
+        ISVMerchantSourceCodeTxt = findViewById(R.id.ISVMerchantSourceCodeTxt);
+        ISVCustomerTrnsTxt = findViewById(R.id.ISVCustomerTrnsTxt);
+        ISVClientTransactionId = findViewById(R.id.ISVMerchantTrnsTxt);
         batchIdTxt = findViewById(R.id.batchIdText);
         batchNameTxt = findViewById(R.id.batchNameText);
         protocolType = findViewById(R.id.protocolType);
@@ -229,12 +218,15 @@ public class MainActivity extends AppCompatActivity {
             ISVClientIdLayout.setVisibility(View.GONE);
             ISVSourceCodeLayout.setVisibility(View.GONE);
             ISVClientSecretLayout.setVisibility(View.GONE);
+            ISVMerchantCheck.setVisibility(View.GONE);
         }else{
             ISVFeeLayout.setVisibility(View.VISIBLE);
             ISVClientIdLayout.setVisibility(View.VISIBLE);
             ISVSourceCodeLayout.setVisibility(View.VISIBLE);
             ISVClientSecretLayout.setVisibility(View.VISIBLE);
+            ISVMerchantCheck.setVisibility(View.VISIBLE);
         }
+
 
         dateFromContainer.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -264,11 +256,20 @@ public class MainActivity extends AppCompatActivity {
                 ISVClientIdLayout.setVisibility(b ? View.VISIBLE : View.GONE);
                 ISVSourceCodeLayout.setVisibility(b ? View.VISIBLE : View.GONE);
                 ISVClientSecretLayout.setVisibility(b ? View.VISIBLE : View.GONE);
+                ISVMerchantCheck.setVisibility(b ? View.VISIBLE : View.GONE);
             }
         });
 
         protocolCheck.setOnCheckedChangeListener(
                 (compoundButton, b) -> protocolContainer.setVisibility(b ? View.VISIBLE : View.GONE));
+        ISVMerchantCheck.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+//                ISVMerchantIdLayout.setVisibility(isChecked ? View.VISIBLE:View.GONE);
+//                ISVMerchantCurrencyLayout.setVisibility(isChecked ? View.VISIBLE:View.GONE);
+                ISVMerchantLayout.setVisibility(isChecked ? View.VISIBLE:View.GONE);
+            }
+        });
 
         token = findViewById(R.id.token);
         sendTockenBtn = findViewById(R.id.sendTockenBtn);
@@ -403,6 +404,13 @@ public class MainActivity extends AppCompatActivity {
             deeplinkPath = deeplinkPath + "&ISV_clientId=" + ISVClientIdTxt.getText().toString();
             deeplinkPath = deeplinkPath + "&ISV_clientSecret=" + ISVClientSecretTxt.getText().toString();
             deeplinkPath = deeplinkPath + "&ISV_sourceCode=" + ISVSourceCodeTxt.getText().toString();
+            if(ISVMerchantCheck.isChecked()) {
+                deeplinkPath += "&ISV_merchantId=" + ISVMerchantIdTxt.getText().toString();
+                deeplinkPath += "&ISV_currencyCode=" + ISVMerchantCurrencyTxt.getText().toString();
+                deeplinkPath += "&ISV_merchantSourceCode=" + ISVMerchantSourceCodeTxt.getText().toString();
+                deeplinkPath += "&ISV_customerTrns=" + ISVCustomerTrnsTxt.getText().toString();
+                deeplinkPath += "&ISV_clientTransactionId=" + ISVClientTransactionId.getText().toString();
+            }
         }
 
         if (protocolCheck.isChecked()) {
@@ -780,47 +788,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(payIntent);
     }
 
-    public void setPrintingSettings(View v) {
-        String callback = "mycallbackscheme://result";
-        String merchantKey = "12345678909";
-        String appId = "com.example.myapp";
-        String action = "set_printing_settings";
-
-        if (emptyMerchantKey.isChecked()) {
-            merchantKey = "";
-        }
-        if (emptyAppId.isChecked()) {
-            merchantKey = "";
-        }
-        if (emptyCallback.isChecked()) {
-            appId = "";
-        }
-        if (emptyAction.isChecked()) {
-            action = "";
-        }
-
-        String reqStr = "vivapayclient://pay/v1"
-                + "?merchantKey=" + merchantKey
-                + "&appId=" + appId
-                + "&action=" + action
-                + "&callback=" + callback
-                + "&businessDescriptionEnabled=" + printBusinessDescription.isChecked()
-                + "&businessDescriptionType=" + businessDescriptionType.getText().toString()
-                + "&printLogoOnMerchantReceipt=" + logoOnMerchantReceipt.isChecked()
-                + "&printVATOnMerchantReceipt=" + vatOnMerchantReceipt.isChecked()
-                + "&isBarcodeEnabled=" + printOrderCode.isChecked()
-                + "&printAddressOnReceipt=" + printAddress.isChecked()
-                + "&isMerchantReceiptEnabled=" + printMerchantReceipt.isChecked()
-                + "&isCustomerReceiptEnabled=" + printCustomerReceipt.isChecked();
-
-
-        Log.d(TAG,  action  + " " + reqStr);
-        Intent payIntent = new Intent(Intent.ACTION_VIEW, Uri.parse( reqStr));
-        payIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        payIntent.addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
-        startActivity(payIntent);
-    }
-
     public void showDateTimePicker(final boolean isStart) {
         if (dialog != null && dialog.isShowing()) {
             return;
@@ -876,9 +843,6 @@ public class MainActivity extends AppCompatActivity {
         dateTo.setText("");
     }
 
-    public void setBusinessDescriptionType(View v) {
-        businessDescriptionType.setText((String)v.getTag());
-    }
 
     public void setProtocolType(View v) {
         protocolType.setText((String)v.getTag());
@@ -1151,11 +1115,13 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.action_unattendedModes) {
             loadFragment(UnattendedFragment.newInstance());
+            return true;
+        } else if (item.getItemId() == R.id.action_printingSettings) {
+            loadFragment(PrintingSettingsFragment.newInstance());
             return true;
         }
         return super.onOptionsItemSelected(item);
