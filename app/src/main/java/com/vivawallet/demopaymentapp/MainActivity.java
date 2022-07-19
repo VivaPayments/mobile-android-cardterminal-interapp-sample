@@ -127,6 +127,8 @@ public class MainActivity extends AppCompatActivity {
     EditText batchIdTxt;
     EditText batchNameTxt;
 
+    EditText reprintTransactionOrderCode;
+
     static final String UTC_DATEFORMAT = "yyyy-MM-dd HH:mm:ss";
 
     @Override
@@ -206,6 +208,8 @@ public class MainActivity extends AppCompatActivity {
         posActivationClientSecret = findViewById(R.id.clientSecretForActivation);
         posActivationSource = findViewById(R.id.sourceCodeForActivation);
         posActivationPinCode = findViewById(R.id.pinCodeForActivation);
+
+        reprintTransactionOrderCode = findViewById(R.id.reprintTransactionOrderCode);
 
         if (!installmentsCheck.isChecked()){
             prefInstallmentsLayout.setVisibility(View.GONE);
@@ -1142,5 +1146,46 @@ public class MainActivity extends AppCompatActivity {
                 .addToBackStack("name") // name can be null
                 .commit();
 
+    }
+
+    public void reprintTransaction(View view) {
+        String callback = "mycallbackscheme://result";
+        String merchantKey = "12345678909";
+        String appId = "com.example.myapp";
+        String action = "print";
+
+        if (emptyMerchantKey.isChecked()) {
+            merchantKey = "";
+        }
+        if (emptyAppId.isChecked()) {
+            merchantKey = "";
+        }
+        if (emptyCallback.isChecked()) {
+            appId = "";
+        }
+        if (emptyAction.isChecked()) {
+            action = "";
+        }
+
+        String deeplinkPath = "vivapayclient://pay/v1"
+                + "?merchantKey=" + merchantKey
+                + "&appId=" + appId
+                + "&action=" + action
+                + "&callback=" + callback
+                + "&command=" + "reprint";
+
+        if (reprintTransactionOrderCode.getText() != null) {
+            if (!reprintTransactionOrderCode.getText().toString().isEmpty()) {
+                deeplinkPath = deeplinkPath
+                        + "&orderCode=" + reprintTransactionOrderCode.getText().toString();
+            }
+        }
+
+        Log.d(TAG, "deeplinkPath:" + deeplinkPath);
+
+        Intent payIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(deeplinkPath));
+        payIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        payIntent.addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
+        startActivity(payIntent);
     }
 }

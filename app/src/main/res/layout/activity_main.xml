@@ -463,6 +463,25 @@
 
                 </LinearLayout>
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="32dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/intMellon"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:onClick="setProtocolType"
+                        android:tag="int_mellon"
+                        android:text="int_mellon"
+                        android:textAllCaps="false" />
+
+                </LinearLayout>
+
             </LinearLayout>
 
             <LinearLayout
@@ -738,6 +757,44 @@
                 android:tag="6"
                 android:text="6€ MISSING CALLBACK" />
 
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Print"
+                android:textSize="25dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="32dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:text="Transaction Order Code:" />
+
+                <EditText
+                    android:id="@+id/reprintTransactionOrderCode"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:text="" />
+
+            </LinearLayout>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:tag="6"
+                android:onClick="reprintTransaction"
+                android:text="Re-print" />
 
             <TextView
                 android:layout_width="match_parent"
