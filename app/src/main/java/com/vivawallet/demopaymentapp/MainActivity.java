@@ -496,9 +496,10 @@ public class MainActivity extends AppCompatActivity {
         Log.d(TAG, "deeplinkPath:" + reqStr);
         Intent payIntent = new Intent(Intent.ACTION_VIEW, Uri.parse( reqStr));
         payIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        payIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        payIntent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
         payIntent.addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
+        //Those two flags should be added for paydroid implementations
+//        payIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//        payIntent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
         startActivity(payIntent);
     }
 
