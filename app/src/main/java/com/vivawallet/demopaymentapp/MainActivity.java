@@ -11,12 +11,15 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -56,12 +59,18 @@ public class MainActivity extends AppCompatActivity {
 
     EditText posActivationClientId;
     EditText posActivationClientSecret;
+    EditText activationCode;
     EditText posActivationSource;
     EditText posActivationPinCode;
     CheckBox skipExternalDeviceSetup;
     CheckBox activateMoto;
     CheckBox activateQR;
-
+    CheckBox disableManualAmountEntry;
+    CheckBox forceCardPresentmentForRefund;
+    CheckBox lockRefund;
+    CheckBox lockTransactionsList;
+    CheckBox lockMoto;
+    CheckBox lockCapture;
 
     FragmentContainerView containerView;
     EditText amountTxt;
@@ -129,7 +138,15 @@ public class MainActivity extends AppCompatActivity {
 
     EditText reprintTransactionOrderCode;
 
+    Spinner spinnerDecimalAmountModes;
+    TextView textDecimalAmountMode;
+    Button btnDecimalAmount;
+
+    EditText transactionDetailsClientTransactionId;
+    EditText transactionDetailsSourceTerminalId;
+
     static final String UTC_DATEFORMAT = "yyyy-MM-dd HH:mm:ss";
+    private String selectedAmountMode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -141,12 +158,19 @@ public class MainActivity extends AppCompatActivity {
 
         posActivationClientId = findViewById(R.id.clientIdForActivation);
         posActivationClientSecret = findViewById(R.id.clientSecretForActivation);
+        activationCode = findViewById(R.id.activationCode);
         posActivationSource = findViewById(R.id.sourceCodeForActivation);
         posActivationPinCode = findViewById(R.id.pinCodeForActivation);
 
         skipExternalDeviceSetup = findViewById(R.id.skipSetupExternalDevice);
         activateMoto = findViewById(R.id.activateMoto);
         activateQR= findViewById(R.id.activateQR);
+        disableManualAmountEntry= findViewById(R.id.disableManualAmountEntry);
+        forceCardPresentmentForRefund = findViewById(R.id.forceCardPresentmentForRefund);
+        lockRefund= findViewById(R.id.lockRefund);
+        lockTransactionsList= findViewById(R.id.lockTransactionsList);
+        lockMoto= findViewById(R.id.lockMoto);
+        lockCapture = findViewById(R.id.lockCapture);
 
         emptyMerchantKey = findViewById(R.id.emptyMerchantKey);
         emptyAppId = findViewById(R.id.emptyAppId);
@@ -210,6 +234,13 @@ public class MainActivity extends AppCompatActivity {
         posActivationPinCode = findViewById(R.id.pinCodeForActivation);
 
         reprintTransactionOrderCode = findViewById(R.id.reprintTransactionOrderCode);
+
+        transactionDetailsClientTransactionId = findViewById(R.id.transactionDetailsClientTransactionId);
+        transactionDetailsSourceTerminalId = findViewById(R.id.transactionDetailsSourceTerminalId);
+
+        spinnerDecimalAmountModes = findViewById(R.id.spinnerDecimalAmountModes);
+        textDecimalAmountMode = findViewById(R.id.textDecimalAmountMode);
+        btnDecimalAmount = findViewById(R.id.btnDecimalAmount);
 
         if (!installmentsCheck.isChecked()){
             prefInstallmentsLayout.setVisibility(View.GONE);
@@ -282,6 +313,31 @@ public class MainActivity extends AppCompatActivity {
         gson = new Gson();
         sendTockenBtn.setVisibility(View.GONE);
 
+        // Set up spinnerDecimalAmount
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getApplicationContext(),
+                R.array.decimalAmountModes, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerDecimalAmountModes.setAdapter(adapter);
+        spinnerDecimalAmountModes.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                selectedAmountMode = String.valueOf(i);
+                if (i == 0) {
+                    textDecimalAmountMode.setText("Decimal Amount");
+                    btnDecimalAmount.setText("Set Decimal Amount");
+                } else {
+                    textDecimalAmountMode.setText("No Decimal Amount");
+                    btnDecimalAmount.setText("Set No Decimal Amount");
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+
     }
 
     @Override
@@ -314,11 +370,18 @@ public class MainActivity extends AppCompatActivity {
                         + "&action=" + action
                         + "&apikey=" + posActivationClientId.getText().toString()
                         + "&apiSecret=" + posActivationClientSecret.getText().toString()
+                        + "&activationCode=" + activationCode.getText().toString()
                         + "&sourceID=" + posActivationSource.getText().toString()
                         + "&pinCode=" + posActivationPinCode.getText().toString()
                         + "&skipExternalDeviceSetup=" + skipExternalDeviceSetup.isChecked()
                         + "&activateMoto=" + activateMoto.isChecked()
-                        + "&activateQRCodes=" + activateQR.isChecked();
+                        + "&activateQRCodes=" + activateQR.isChecked()
+                        + "&disableManualAmountEntry=" + disableManualAmountEntry.isChecked()
+                        + "&forceCardPresentmentForRefund=" + forceCardPresentmentForRefund.isChecked()
+                        + "&lockRefund=" + lockRefund.isChecked()
+                        + "&lockTransactionsList=" + lockTransactionsList.isChecked()
+                        + "&lockMoto=" + lockMoto.isChecked()
+                        + "&lockCapture=" + lockCapture.isChecked();
 
         if (protocolCheck.isChecked()) {
             deeplinkPath = deeplinkPath + "&protocol=" + protocolType.getText().toString();
@@ -339,7 +402,19 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    
+    public void getActivationCode(View v) {
+        String deeplinkPath = "vivapayclient://pay/v1?action=getActivationCode"
+                + "&appId=com.example.myapp"
+                + "&callback=mycallbackscheme://result";
+        Intent payIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(deeplinkPath));
+        payIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        payIntent.addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
+        try {
+            startActivity(payIntent);
+        } catch (Exception exception) {
+            Timber.e(exception.getLocalizedMessage());
+        }
+    }
 
     public void saleAction(View v){
         String amountL = "1200";
@@ -1181,6 +1256,87 @@ public class MainActivity extends AppCompatActivity {
                         + "&orderCode=" + reprintTransactionOrderCode.getText().toString();
             }
         }
+
+        Log.d(TAG, "deeplinkPath:" + deeplinkPath);
+
+        Intent payIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(deeplinkPath));
+        payIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        payIntent.addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
+        startActivity(payIntent);
+    }
+
+    public void getTransactionDetails(View view) {
+        String callback = "mycallbackscheme://result";
+        String merchantKey = "12345678909";
+        String appId = "com.example.myapp";
+        String action = "transactionDetails";
+
+        if (emptyMerchantKey.isChecked()) {
+            merchantKey = "";
+        }
+        if (emptyAppId.isChecked()) {
+            merchantKey = "";
+        }
+        if (emptyCallback.isChecked()) {
+            appId = "";
+        }
+        if (emptyAction.isChecked()) {
+            action = "";
+        }
+
+        String deeplinkPath = "vivapayclient://pay/v1"
+                + "?merchantKey=" + merchantKey
+                + "&appId=" + appId
+                + "&action=" + action
+                + "&callback=" + callback;
+
+        if (transactionDetailsClientTransactionId.getText() != null) {
+            if (!transactionDetailsClientTransactionId.getText().toString().isEmpty()) {
+                deeplinkPath = deeplinkPath
+                        + "&clientTransactionId=" + transactionDetailsClientTransactionId.getText().toString();
+            }
+        }
+
+        if (transactionDetailsSourceTerminalId.getText() != null) {
+            if (!transactionDetailsSourceTerminalId.getText().toString().isEmpty()) {
+                deeplinkPath = deeplinkPath
+                        + "&sourceTerminalId=" + transactionDetailsSourceTerminalId.getText().toString();
+            }
+        }
+
+        Log.d(TAG, "deeplinkPath:" + deeplinkPath);
+
+        Intent payIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(deeplinkPath));
+        payIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        payIntent.addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
+        startActivity(payIntent);
+    }
+
+    public void setDecimalAmount(View view) {
+        String callback = "mycallbackscheme://result";
+        String merchantKey = "12345678909";
+        String appId = "com.example.myapp";
+        String action = "amountDecimalMode";
+
+        if (emptyMerchantKey.isChecked()) {
+            merchantKey = "";
+        }
+        if (emptyAppId.isChecked()) {
+            merchantKey = "";
+        }
+        if (emptyCallback.isChecked()) {
+            appId = "";
+        }
+        if (emptyAction.isChecked()) {
+            action = "";
+        }
+
+        String deeplinkPath = "vivapayclient://pay/v1"
+                + "?merchantKey=" + merchantKey
+                + "&appId=" + appId
+                + "&action=" + action
+                + "&callback=" + callback
+                + "&decimalMode=" + selectedAmountMode;
 
         Log.d(TAG, "deeplinkPath:" + deeplinkPath);
 

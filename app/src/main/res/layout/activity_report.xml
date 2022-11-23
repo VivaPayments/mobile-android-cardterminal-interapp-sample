@@ -206,6 +206,67 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:background="#e3e3e3"
+                    android:text="activationCode: "
+                    android:textColor="#3d3d3f"
+                    android:textSize="16sp" />
+
+                <LinearLayout
+                    android:layout_width="5dp"
+                    android:layout_height="1dp" />
+
+                <TextView
+                    android:id="@+id/activationCodeTxt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:textIsSelectable="true"
+                    android:text=""
+                    android:textColor="#000"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:background="#e3e3e3"
+                    android:text="transactionType: "
+                    android:textColor="#3d3d3f"
+                    android:textSize="16sp" />
+
+                <LinearLayout
+                    android:layout_width="5dp"
+                    android:layout_height="1dp" />
+
+                <TextView
+                    android:id="@+id/transactionTypeTxt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:text=""
+                    android:textColor="#000"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:background="#e3e3e3"
                     android:text="clientTransactionId: "
                     android:textColor="#3d3d3f"
                     android:textSize="16sp" />
@@ -642,6 +703,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
                     android:text=""
+                    android:textIsSelectable="true"
                     android:textColor="#000"
                     android:textSize="16sp" />
 
@@ -848,6 +910,419 @@
 
                 <TextView
                     android:id="@+id/ISV_sourceCode"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:text=""
+                    android:textColor="#000"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:background="#e3e3e3"
+                    android:text="loyaltyMerchant: "
+                    android:textColor="#3d3d3f"
+                    android:textSize="16sp" />
+
+                <LinearLayout
+                    android:layout_width="5dp"
+                    android:layout_height="1dp" />
+
+                <TextView
+                    android:id="@+id/loyaltyMerchant"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:text=""
+                    android:textColor="#000"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:background="#e3e3e3"
+                    android:text="loyaltyTerminal: "
+                    android:textColor="#3d3d3f"
+                    android:textSize="16sp" />
+
+                <LinearLayout
+                    android:layout_width="5dp"
+                    android:layout_height="1dp" />
+
+                <TextView
+                    android:id="@+id/loyaltyTerminal"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:text=""
+                    android:textColor="#000"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:background="#e3e3e3"
+                    android:text="loyaltyPacketNo: "
+                    android:textColor="#3d3d3f"
+                    android:textSize="16sp" />
+
+                <LinearLayout
+                    android:layout_width="5dp"
+                    android:layout_height="1dp" />
+
+                <TextView
+                    android:id="@+id/loyaltyPacketNo"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:text=""
+                    android:textColor="#000"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:background="#e3e3e3"
+                    android:text="loyaltyTransactionNo: "
+                    android:textColor="#3d3d3f"
+                    android:textSize="16sp" />
+
+                <LinearLayout
+                    android:layout_width="5dp"
+                    android:layout_height="1dp" />
+
+                <TextView
+                    android:id="@+id/loyaltyTransactionNo"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:text=""
+                    android:textColor="#000"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:background="#e3e3e3"
+                    android:text="loyaltyPaymentAmount: "
+                    android:textColor="#3d3d3f"
+                    android:textSize="16sp" />
+
+                <LinearLayout
+                    android:layout_width="5dp"
+                    android:layout_height="1dp" />
+
+                <TextView
+                    android:id="@+id/loyaltyPaymentAmount"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:text=""
+                    android:textColor="#000"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:background="#e3e3e3"
+                    android:text="loyaltyRedemptionAmount: "
+                    android:textColor="#3d3d3f"
+                    android:textSize="16sp" />
+
+                <LinearLayout
+                    android:layout_width="5dp"
+                    android:layout_height="1dp" />
+
+                <TextView
+                    android:id="@+id/loyaltyRedemptionAmount"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:text=""
+                    android:textColor="#000"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:background="#e3e3e3"
+                    android:text="loyaltyFinalAmount: "
+                    android:textColor="#3d3d3f"
+                    android:textSize="16sp" />
+
+                <LinearLayout
+                    android:layout_width="5dp"
+                    android:layout_height="1dp" />
+
+                <TextView
+                    android:id="@+id/loyaltyFinalAmount"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:text=""
+                    android:textColor="#000"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:background="#e3e3e3"
+                    android:text="loyaltyPointsCollected: "
+                    android:textColor="#3d3d3f"
+                    android:textSize="16sp" />
+
+                <LinearLayout
+                    android:layout_width="5dp"
+                    android:layout_height="1dp" />
+
+                <TextView
+                    android:id="@+id/loyaltyPointsCollected"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:text=""
+                    android:textColor="#000"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:background="#e3e3e3"
+                    android:text="loyaltyPointsRedeemed: "
+                    android:textColor="#3d3d3f"
+                    android:textSize="16sp" />
+
+                <LinearLayout
+                    android:layout_width="5dp"
+                    android:layout_height="1dp" />
+
+                <TextView
+                    android:id="@+id/loyaltyPointsRedeemed"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:text=""
+                    android:textColor="#000"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:background="#e3e3e3"
+                    android:text="loyaltyPointsPrevBalance: "
+                    android:textColor="#3d3d3f"
+                    android:textSize="16sp" />
+
+                <LinearLayout
+                    android:layout_width="5dp"
+                    android:layout_height="1dp" />
+
+                <TextView
+                    android:id="@+id/loyaltyPointsPrevBalance"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:text=""
+                    android:textColor="#000"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:background="#e3e3e3"
+                    android:text="loyaltyPointsNewBalance: "
+                    android:textColor="#3d3d3f"
+                    android:textSize="16sp" />
+
+                <LinearLayout
+                    android:layout_width="5dp"
+                    android:layout_height="1dp" />
+
+                <TextView
+                    android:id="@+id/loyaltyPointsNewBalance"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:text=""
+                    android:textColor="#000"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:background="#e3e3e3"
+                    android:text="LoyaltyExtraMessage: "
+                    android:textColor="#3d3d3f"
+                    android:textSize="16sp" />
+
+                <LinearLayout
+                    android:layout_width="5dp"
+                    android:layout_height="1dp" />
+
+                <TextView
+                    android:id="@+id/loyaltyExtraMessage"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:text=""
+                    android:textColor="#000"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:background="#e3e3e3"
+                    android:text="LoyaltyProgramId: "
+                    android:textColor="#3d3d3f"
+                    android:textSize="16sp" />
+
+                <LinearLayout
+                    android:layout_width="5dp"
+                    android:layout_height="1dp" />
+
+                <TextView
+                    android:id="@+id/loyaltyProgramId"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:text=""
+                    android:textColor="#000"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:background="#e3e3e3"
+                    android:text="LoyaltyLogoUrl: "
+                    android:textColor="#3d3d3f"
+                    android:textSize="16sp" />
+
+                <LinearLayout
+                    android:layout_width="5dp"
+                    android:layout_height="1dp" />
+
+                <TextView
+                    android:id="@+id/loyaltyLogoUrl"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"

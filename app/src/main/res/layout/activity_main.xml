@@ -72,7 +72,21 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:gravity="center"
-                android:text="Lb6i1sNXZ398nm8E5zU4avd1O5oM0W" />
+                android:text="7k7Law1kK2U44PU2k3LLiOm6j8Gr0V" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_weight="1"
+                android:text="Activation code" />
+
+            <EditText
+                android:id="@+id/activationCode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:gravity="center" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -86,8 +100,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:gravity="center"
-                android:text="1111" />
+                android:gravity="center" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -128,12 +141,73 @@
                 android:checked="false"
                 android:text="Activate QR codes" />
 
+            <CheckBox
+                android:layout_marginTop="16dp"
+                android:id="@+id/disableManualAmountEntry"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="Disable Manual Amount Entry" />
+
+            <CheckBox
+                android:layout_marginTop="16dp"
+                android:id="@+id/forceCardPresentmentForRefund"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="Force card presentment for refunds" />
+
+            <CheckBox
+                android:layout_marginTop="16dp"
+                android:id="@+id/lockRefund"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="Lock Refund" />
+
+            <CheckBox
+                android:layout_marginTop="16dp"
+                android:id="@+id/lockTransactionsList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="Lock Transactions List" />
+
+            <CheckBox
+                android:layout_marginTop="16dp"
+                android:id="@+id/lockMoto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="Lock Moto" />
+
+            <CheckBox
+                android:layout_marginTop="16dp"
+                android:id="@+id/lockCapture"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="Lock capture preauth" />
+
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:onClick="posActivationAction"
                 android:text="POS ACTIVATION" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="10dp"
+                android:background="#3d3d3f" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:onClick="getActivationCode"
+                android:text="GET ACTIVATION CODE" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -757,6 +831,115 @@
                 android:tag="6"
                 android:text="6€ MISSING CALLBACK" />
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Decimal Amount Support"
+                android:textSize="25dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#3d3d3f" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Decimal Amount"
+                    android:id="@+id/textDecimalAmountMode"
+                    />
+
+                <Spinner
+                    android:id="@+id/spinnerDecimalAmountModes"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:minHeight="32dp"
+                    android:layout_weight="1"
+                    android:spinnerMode="dropdown" />
+
+            </LinearLayout>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:tag="6"
+                android:onClick="setDecimalAmount"
+                android:text="Set Decimal Amount"
+                android:id="@+id/btnDecimalAmount"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Transaction Details"
+                android:textSize="25dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#3d3d3f" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="32dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:text="Client Transaction ID:" />
+
+                <EditText
+                    android:id="@+id/transactionDetailsClientTransactionId"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:text="" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="32dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:text="Source Terminal ID:" />
+
+                <EditText
+                    android:id="@+id/transactionDetailsSourceTerminalId"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:text="" />
+
+            </LinearLayout>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:tag="6"
+                android:onClick="getTransactionDetails"
+                android:text="Get Transaction Details" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -764,6 +947,11 @@
                 android:layout_marginTop="20dp"
                 android:text="Print"
                 android:textSize="25dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#3d3d3f" />
 
             <LinearLayout
                 android:layout_width="match_parent"

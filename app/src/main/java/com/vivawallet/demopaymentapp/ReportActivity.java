@@ -7,6 +7,7 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import android.util.Log;
+import android.widget.LinearLayout;
 import android.view.View;
 import android.widget.TextView;
 
@@ -19,6 +20,8 @@ public class ReportActivity extends AppCompatActivity {
     TextView statusTxt;
     TextView msgTxt;
     TextView actionTxt;
+    TextView activationCodeTxt;
+    TextView transactionTypeTxt;
     TextView clientTransactionIdTxt;
     TextView amountTxt;
     TextView tipAmountTxt;
@@ -52,6 +55,20 @@ public class ReportActivity extends AppCompatActivity {
     TextView ISV_merchantId;
     TextView ISV_currencyCode;
     TextView ISV_MerchantSourceCode, ISV_customerTrns, ISV_ClientTransactionId;
+    TextView loyaltyMerchant;
+    TextView loyaltyTerminal;
+    TextView loyaltyPacketNo;
+    TextView loyaltyTransactionNo;
+    TextView loyaltyRedemptionAmount;
+    TextView loyaltyPaymentAmount;
+    TextView loyaltyFinalAmount;
+    TextView loyaltyPointsCollected;
+    TextView loyaltyPointsRedeemed;
+    TextView loyaltyPointsPrevBalance;
+    TextView loyaltyPointsNewBalance;
+    TextView loyaltyExtraMessage;
+    TextView loyaltyProgramId;
+    TextView loyaltyLogoUrl;
     TextView commandTxt;
     TextView batchIdTxt;
     TextView batchNameTxt;
@@ -77,7 +94,6 @@ public class ReportActivity extends AppCompatActivity {
     TextView newBalance;
     TextView entryMode;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,6 +106,8 @@ public class ReportActivity extends AppCompatActivity {
         statusTxt = findViewById(R.id.statusTxt);
         msgTxt = findViewById(R.id.msgTxt);
         actionTxt = findViewById(R.id.actionTxt);
+        transactionTypeTxt = findViewById(R.id.transactionTypeTxt);
+        activationCodeTxt = findViewById(R.id.activationCodeTxt);
         clientTransactionIdTxt = findViewById(R.id.clientTransactionIdTxt);
         amountTxt = findViewById(R.id.amountTxt);
         tipAmountTxt = findViewById(R.id.tipAmountTxt);
@@ -152,6 +170,21 @@ public class ReportActivity extends AppCompatActivity {
         oldBalance = findViewById(R.id.oldBalance);
         newBalance = findViewById(R.id.newBalance);
         entryMode = findViewById(R.id.entryMode);
+        //loyalties
+        loyaltyMerchant = findViewById(R.id.loyaltyMerchant);
+        loyaltyTerminal = findViewById(R.id.loyaltyTerminal);
+        loyaltyPacketNo = findViewById(R.id.loyaltyPacketNo);
+        loyaltyTransactionNo = findViewById(R.id.loyaltyTransactionNo);
+        loyaltyRedemptionAmount = findViewById(R.id.loyaltyRedemptionAmount);
+        loyaltyPaymentAmount = findViewById(R.id.loyaltyPaymentAmount);
+        loyaltyFinalAmount = findViewById(R.id.loyaltyFinalAmount);
+        loyaltyPointsCollected = findViewById(R.id.loyaltyPointsCollected);
+        loyaltyPointsRedeemed = findViewById(R.id.loyaltyPointsRedeemed);
+        loyaltyPointsPrevBalance = findViewById(R.id.loyaltyPointsPrevBalance);
+        loyaltyPointsNewBalance = findViewById(R.id.loyaltyPointsNewBalance);
+        loyaltyExtraMessage = findViewById(R.id.loyaltyExtraMessage);
+        loyaltyProgramId = findViewById(R.id.loyaltyProgramId);
+        loyaltyLogoUrl = findViewById(R.id.loyaltyLogoUrl);
 
         Intent i = getIntent();
 
@@ -165,6 +198,8 @@ public class ReportActivity extends AppCompatActivity {
             statusTxt.setText(data.getQueryParameter("status") + "");
             msgTxt.setText(data.getQueryParameter("message") + "");
             actionTxt.setText(data.getQueryParameter("action") + "");
+            activationCodeTxt.setText(data.getQueryParameter("activationCode") + "");
+            transactionTypeTxt.setText(data.getQueryParameter("transactionType"));
             clientTransactionIdTxt.setText(data.getQueryParameter("clientTransactionId") + "");
             amountTxt.setText(data.getQueryParameter("amount") + "");
             tipAmountTxt.setText(data.getQueryParameter("tipAmount") + "");
@@ -229,6 +264,21 @@ public class ReportActivity extends AppCompatActivity {
             oldBalance.setText(data.getQueryParameter("oldBalance"));
             newBalance.setText(data.getQueryParameter("newBalance"));
             entryMode.setText(data.getQueryParameter("entryMode"));
+
+            loyaltyMerchant.setText(data.getQueryParameter("loyaltyMerchant"));
+            loyaltyTerminal.setText(data.getQueryParameter("loyaltyTerminal"));
+            loyaltyPacketNo.setText(data.getQueryParameter("loyaltyPacketNo"));
+            loyaltyTransactionNo.setText(data.getQueryParameter("loyaltyTransactionNo"));
+            loyaltyPaymentAmount.setText(data.getQueryParameter("loyaltyPaymentAmount"));
+            loyaltyRedemptionAmount.setText(data.getQueryParameter("loyaltyRedemptionAmount"));
+            loyaltyFinalAmount.setText(data.getQueryParameter("loyaltyFinalAmount"));
+            loyaltyPointsCollected.setText(data.getQueryParameter("loyaltyPointsCollected"));
+            loyaltyPointsRedeemed.setText(data.getQueryParameter("loyaltyPointsRedeemed"));
+            loyaltyPointsPrevBalance.setText(data.getQueryParameter("loyaltyPointsPrevBalance"));
+            loyaltyPointsNewBalance.setText(data.getQueryParameter("loyaltyPointsNewBalance"));
+            loyaltyExtraMessage.setText(data.getQueryParameter("loyaltyExtraMessage"));
+            loyaltyProgramId.setText(data.getQueryParameter("loyaltyProgramId"));
+            loyaltyLogoUrl.setText(data.getQueryParameter("loyaltyLogoUrl"));
         }else{
 
         }
