@@ -71,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
     CheckBox lockTransactionsList;
     CheckBox lockMoto;
     CheckBox lockCapture;
+    CheckBox lockPreAuth;
 
     FragmentContainerView containerView;
     EditText amountTxt;
@@ -145,6 +146,11 @@ public class MainActivity extends AppCompatActivity {
     EditText transactionDetailsClientTransactionId;
     EditText transactionDetailsSourceTerminalId;
 
+    EditText amountPreAuthTxt;
+    EditText paymentPreAuthReferenceTxt;
+
+    Spinner spinnerPaymentMethod;
+
     static final String UTC_DATEFORMAT = "yyyy-MM-dd HH:mm:ss";
     private String selectedAmountMode;
 
@@ -171,6 +177,7 @@ public class MainActivity extends AppCompatActivity {
         lockTransactionsList= findViewById(R.id.lockTransactionsList);
         lockMoto= findViewById(R.id.lockMoto);
         lockCapture = findViewById(R.id.lockCapture);
+        lockPreAuth = findViewById(R.id.lockPreAuth);
 
         emptyMerchantKey = findViewById(R.id.emptyMerchantKey);
         emptyAppId = findViewById(R.id.emptyAppId);
@@ -241,6 +248,12 @@ public class MainActivity extends AppCompatActivity {
         spinnerDecimalAmountModes = findViewById(R.id.spinnerDecimalAmountModes);
         textDecimalAmountMode = findViewById(R.id.textDecimalAmountMode);
         btnDecimalAmount = findViewById(R.id.btnDecimalAmount);
+
+        amountPreAuthTxt = findViewById(R.id.amountPreAuthTxt);
+        paymentPreAuthReferenceTxt = findViewById(R.id.paymentPreAuthReferenceTxt);
+
+        spinnerPaymentMethod = findViewById(R.id.spinnerPaymentMethod);
+        spinnerPaymentMethod.setTag(getResources().getStringArray(R.array.decimalAmountModes)[0]);
 
         if (!installmentsCheck.isChecked()){
             prefInstallmentsLayout.setVisibility(View.GONE);
@@ -337,7 +350,26 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        ArrayAdapter<CharSequence> paymentMethodAdapter = ArrayAdapter.createFromResource(
+                getApplicationContext(),
+                R.array.paymentMethod,
+                android.R.layout.simple_spinner_item
+        );
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
+        spinnerPaymentMethod.setAdapter(paymentMethodAdapter);
+        spinnerPaymentMethod.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            String[] methods = getResources().getStringArray(R.array.paymentMethod);
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                spinnerPaymentMethod.setTag(methods[position]);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
 
     @Override
@@ -381,7 +413,8 @@ public class MainActivity extends AppCompatActivity {
                         + "&lockRefund=" + lockRefund.isChecked()
                         + "&lockTransactionsList=" + lockTransactionsList.isChecked()
                         + "&lockMoto=" + lockMoto.isChecked()
-                        + "&lockCapture=" + lockCapture.isChecked();
+                        + "&lockCapture=" + lockCapture.isChecked()
+                        + "&lockPreAuth=" + lockPreAuth.isChecked();
 
         if (protocolCheck.isChecked()) {
             deeplinkPath = deeplinkPath + "&protocol=" + protocolType.getText().toString();
@@ -423,6 +456,7 @@ public class MainActivity extends AppCompatActivity {
         String merchantKey = "12345678909";
         String appId = "com.example.myapp";
         String action = "sale";
+        String paymentMethod = (String) spinnerPaymentMethod.getTag();
 
         if (v.getTag().toString().equalsIgnoreCase("0.5")) {
             amountL = "50";
@@ -472,7 +506,8 @@ public class MainActivity extends AppCompatActivity {
                 + "&show_rating=" + rating
                 + "&show_transaction_result=" + result
                 + "&withInstallments=" + installments
-                + "&preferredInstallments=" + prefInstallments;
+                + "&preferredInstallments=" + prefInstallments
+                + "&paymentMethod=" + paymentMethod;
 
         if (!paymentReferenceTxt.getText().toString().equals("")) {
             deeplinkPath = deeplinkPath + "&clientTransactionId=" + paymentReferenceTxt.getText().toString();
@@ -511,9 +546,73 @@ public class MainActivity extends AppCompatActivity {
 
         }
     }
+
+    public void preAuthAction(View view) {
+        String callback = "mycallbackscheme://result";
+        String merchantKey = "12345678909";
+        String appId = "com.example.myapp";
+        String action = "pre_auth";
+        String amountL = "000";
+
+        if (amountPreAuthTxt.getText().toString() != null && !amountPreAuthTxt.getText().toString().isEmpty()) {
+            amountL = amountPreAuthTxt.getText().toString();
+        }
+
+        if(emptyMerchantKey.isChecked()){
+            merchantKey = "";
+        }
+        if(emptyAppId.isChecked()){
+            merchantKey = "";
+        }
+        if(emptyCallback.isChecked()){
+            appId = "";
+        }
+        if(emptyAction.isChecked()){
+            action = "";
+        }
+
+        boolean receipt = receiptCheck.isChecked();
+        boolean rating = ratingCheck.isChecked();
+        boolean result = resultCheck.isChecked();
+
+        String deeplinkPath = "vivapayclient://pay/v1"
+                + "?merchantKey=" + merchantKey
+                + "&appId=" + appId
+                + "&action=" + action
+                + "&amount=" + amountL
+                + "&show_receipt=" + receipt
+                + "&show_rating=" + rating
+                + "&show_transaction_result=" + result;
+
+        if (!paymentPreAuthReferenceTxt.getText().toString().equals("")) {
+            deeplinkPath = deeplinkPath + "&clientTransactionId=" + paymentPreAuthReferenceTxt.getText().toString();
+        }
+
+        deeplinkPath = deeplinkPath + "&callback=" + callback;
+
+        Log.d(TAG, "deeplinkPath:" + " " +deeplinkPath);
+
+        Intent payIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(deeplinkPath));
+        payIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+        payIntent.addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
+
+        try{
+            startActivity(payIntent);
+        }catch (Exception e){
+
+        }
+    }
+
+    public void capturePreAuthTransactionAction(View view) {
+        cancelOrPreAuthTransaction("capture_pre_auth");
+    }
+
     public void cancelTransactionAction(View v){
+        cancelOrPreAuthTransaction("cancel");
+    }
 
-
+    private void cancelOrPreAuthTransaction(String action) {
         boolean receipt = receiptCheck.isChecked();
         boolean rating = ratingCheck.isChecked();
         boolean result = resultCheck.isChecked();
@@ -521,7 +620,6 @@ public class MainActivity extends AppCompatActivity {
         String callback = "mycallbackscheme://result";
         String merchantKey = "12345678909";
         String appId = "com.example.myapp";
-        String action = "cancel";
 
         if(emptyMerchantKey.isChecked()){
             merchantKey = "";
@@ -1344,5 +1442,43 @@ public class MainActivity extends AppCompatActivity {
         payIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         payIntent.addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
         startActivity(payIntent);
+    }
+
+    public void softReset(View v){
+        String deeplinkPath = getResetBaseRequest()
+                + "&softReset=" + true;
+
+        Log.d(TAG, "deeplinkPath:" + deeplinkPath);
+
+        Intent payIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(deeplinkPath));
+        payIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        payIntent.addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
+        startActivity(payIntent);
+    }
+
+    public void fullReset(View v){
+
+        String deeplinkPath = getResetBaseRequest()
+                + "&softReset=" + false;
+
+        Log.d(TAG, "deeplinkPath:" + deeplinkPath);
+
+        Intent payIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(deeplinkPath));
+        payIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        payIntent.addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
+        startActivity(payIntent);
+    }
+
+    private String getResetBaseRequest(){
+        String callback = "mycallbackscheme://result";
+        String merchantKey = "12345678909";
+        String appId = "com.example.myapp";
+        String action = "reset";
+
+        return  "vivapayclient://pay/v1"
+                + "?merchantKey=" + merchantKey
+                + "&appId=" + appId
+                + "&action=" + action
+                + "&callback=" + callback;
     }
 }

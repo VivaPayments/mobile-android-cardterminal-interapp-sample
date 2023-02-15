@@ -22,4 +22,13 @@
         <item>No Decimal Amount</item>
     </string-array>
 
+    <string-array name="paymentMethod">
+        <item>CardPresent</item>
+        <item>MOTO</item>
+        <item>QrDefault</item>
+        <item>QrPayconic</item>
+        <item>AliPay</item>
+        <item>Paypal</item>
+        <item>Klarna</item>
+    </string-array>
 </resources>

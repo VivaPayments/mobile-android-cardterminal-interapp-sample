@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".MainActivity">
+    android:orientation="vertical">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -189,6 +188,14 @@
                 android:checked="false"
                 android:text="Lock capture preauth" />
 
+            <CheckBox
+                android:layout_marginTop="16dp"
+                android:id="@+id/lockPreAuth"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="Lock preauth" />
+
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -314,6 +321,28 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:gravity="center" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textPaymentMethod"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Payment Method" />
+
+                <Spinner
+                    android:id="@+id/spinnerPaymentMethod"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:minHeight="32dp"
+                    android:layout_weight="1"
+                    android:spinnerMode="dropdown" />
 
             </LinearLayout>
 
@@ -834,6 +863,69 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:text="Pre-auth"
+                android:textSize="25dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#3d3d3f" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="visible">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Amount:\n(in Cents)" />
+
+                <EditText
+                    android:id="@+id/amountPreAuthTxt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:inputType="number"
+                    android:text="10" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="visible">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Payment Reference Number" />
+
+                <EditText
+                    android:id="@+id/paymentPreAuthReferenceTxt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:gravity="center" />
+
+            </LinearLayout>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:onClick="preAuthAction"
+                android:text="PRE_AUTH" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:text="Decimal Amount Support"
                 android:textSize="25dp" />
@@ -988,7 +1080,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="Cancel Transaction"
+                android:text="Cancel or Capture Pre-Auth Transaction"
                 android:textSize="25dp" />
 
             <LinearLayout
@@ -1138,6 +1230,13 @@
                 android:layout_marginTop="10dp"
                 android:onClick="cancelTransactionAction"
                 android:text="Cancel Transaction" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:onClick="capturePreAuthTransactionAction"
+                android:text="Capture Pre-Auth Transaction" />
 
 
             <LinearLayout
@@ -1674,6 +1773,41 @@
                     android:layout_marginTop="20dp"
                     android:onClick="sendLogsButtonTapped"
                     android:text="Send Logs" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="Reset"
+                    android:textSize="25sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#3d3d3f" />
+
+                <Button
+                    android:id="@+id/softResetButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:onClick="softReset"
+                    android:text="Soft reset" />
+
+                <Button
+                    android:id="@+id/fullResetButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:onClick="fullReset"
+                    android:text="Full reset" />
 
             </LinearLayout>
 
