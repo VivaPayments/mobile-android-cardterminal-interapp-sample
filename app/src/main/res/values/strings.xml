@@ -15,6 +15,7 @@
         <item>Semi Unattended</item>
         <item>Full Screen Unattended</item>
         <item>ECR Controlled</item>
+        <item>ECR Attended</item>
     </string-array>
 
     <string-array name="decimalAmountModes">
